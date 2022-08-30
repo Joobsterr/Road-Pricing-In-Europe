@@ -3,11 +3,13 @@
         <div class="card card-plain">
             <div class="row">
                 <div class="col-md-12">
-
+                    <!-- Add new car button -->
                     <button type="button" class="btn btn-success btn-block" data-toggle="modal"
                         data-target="#newCarModal">
                         Add new car
                     </button>
+
+                    <!-- Pop-up card -->
                     <div class="modal fade" id="newCarModal" tabindex="-1" role="dialog" aria-labelledby="newCarLabel"
                         aria-hidden="true">
                         <div class="modal-dialog" role="document">
@@ -53,239 +55,248 @@
                             </div>
                         </div>
                     </div>
+                    <!-- List of cars (expandable) -->
 
-                    <div class="card-body">
-                        <div id="accordion">
-                            <div class="card">
-                                <div class="card-header" id="headingOne">
-                                    <div class="card-header card-header-danger" data-toggle="collapse"
-                                        data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        <h4 class="card-title ">Audi R8</h4>
-                                        <p class="card-category">81-RS-LP</p>
-                                    </div>
-
-                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                                        data-parent="#accordion">
-                                        <div class="card-body">
-                                            <div class="table-responsive">
-                                                <table class="table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                Color
-                                                            </td>
-                                                            <td>
-                                                                Silver
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                Purchase date
-                                                            </td>
-                                                            <td>
-                                                                08-02-2021
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                Total km driven
-                                                            </td>
-                                                            <td>
-                                                                42564
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                Average km/month
-                                                            </td>
-                                                            <td>
-                                                                2364km/month
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                Average €/month
-                                                            </td>
-                                                            <td>
-                                                                €1182/month
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-body">
+                                <div id="accordion">
+                                    <div class="card">
+                                        <div class="card-header" id="headingOne">
+                                            <div class="card-header card-header-danger" data-toggle="collapse"
+                                                data-target="#collapseOne" aria-expanded="true"
+                                                aria-controls="collapseOne">
+                                                <h4 class="card-title ">Audi R8</h4>
+                                                <p class="card-category">81-RS-LP</p>
                                             </div>
-                                        </div>
-                                    </div>
 
-                                    <div class="card-header card-header-danger" data-toggle="collapse"
-                                        data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                                        <h4 class="card-title ">Mazda RX-8</h4>
-                                        <p class="card-category">G-943-JD</p>
-                                    </div>
-
-                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-                                        data-parent="#accordion">
-                                        <div class="card-body">
-                                            <div class="table-responsive">
-                                                <table class="table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                Color
-                                                            </td>
-                                                            <td>
-                                                                Crimson
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                Purchase date
-                                                            </td>
-                                                            <td>
-                                                                11-05-2019
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                Total km driven
-                                                            </td>
-                                                            <td>
-                                                                158967
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                Average km/month
-                                                            </td>
-                                                            <td>
-                                                                5482km/month
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                Average €/month
-                                                            </td>
-                                                            <td>
-                                                                €2741/month
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+                                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                                data-parent="#accordion">
+                                                <div class="card-body">
+                                                    <div class="table-responsive">
+                                                        <table class="table">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        Color
+                                                                    </td>
+                                                                    <td>
+                                                                        Silver
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        Purchase date
+                                                                    </td>
+                                                                    <td>
+                                                                        08-02-2021
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        Total km driven
+                                                                    </td>
+                                                                    <td>
+                                                                        42564
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        Average km/month
+                                                                    </td>
+                                                                    <td>
+                                                                        2364km/month
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        Average €/month
+                                                                    </td>
+                                                                    <td>
+                                                                        €1182/month
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
 
-                                    <div class="card-header card-header-danger" data-toggle="collapse"
-                                        data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                                        <h4 class="card-title ">McLaren 720S</h4>
-                                        <p class="card-category">NT-595-G</p>
-                                    </div>
-
-                                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-                                        data-parent="#accordion">
-                                        <div class="card-body">
-                                            <div class="table-responsive">
-                                                <table class="table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                Color
-                                                            </td>
-                                                            <td>
-                                                                Papaya
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                Purchase date
-                                                            </td>
-                                                            <td>
-                                                                24-07-2022
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                Total km driven
-                                                            </td>
-                                                            <td>
-                                                                2596
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                Average km/month
-                                                            </td>
-                                                            <td>
-                                                                768km/month
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                Average €/month
-                                                            </td>
-                                                            <td>
-                                                                €384/month
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+                                            <div class="card-header card-header-danger" data-toggle="collapse"
+                                                data-target="#collapseTwo" aria-expanded="true"
+                                                aria-controls="collapseTwo">
+                                                <h4 class="card-title ">Mazda RX-8</h4>
+                                                <p class="card-category">G-943-JD</p>
                                             </div>
-                                        </div>
-                                    </div>
 
-                                    <div class="card-header card-header-danger" data-toggle="collapse"
-                                        data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
-                                        <h4 class="card-title ">Mini Cooper S</h4>
-                                        <p class="card-category">SN-846-R</p>
-                                    </div>
+                                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                                data-parent="#accordion">
+                                                <div class="card-body">
+                                                    <div class="table-responsive">
+                                                        <table class="table">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        Color
+                                                                    </td>
+                                                                    <td>
+                                                                        Crimson
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        Purchase date
+                                                                    </td>
+                                                                    <td>
+                                                                        11-05-2019
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        Total km driven
+                                                                    </td>
+                                                                    <td>
+                                                                        158967
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        Average km/month
+                                                                    </td>
+                                                                    <td>
+                                                                        5482km/month
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        Average €/month
+                                                                    </td>
+                                                                    <td>
+                                                                        €2741/month
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
-                                        data-parent="#accordion">
-                                        <div class="card-body">
-                                            <div class="table-responsive">
-                                                <table class="table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                Color
-                                                            </td>
-                                                            <td>
-                                                                Steelblue
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                Purchase date
-                                                            </td>
-                                                            <td>
-                                                                18-01-2021
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                Total km driven
-                                                            </td>
-                                                            <td>
-                                                                81576
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                Average km/month
-                                                            </td>
-                                                            <td>
-                                                                4078km/month
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                Average €/month
-                                                            </td>
-                                                            <td>
-                                                                €2039/month
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+                                            <div class="card-header card-header-danger" data-toggle="collapse"
+                                                data-target="#collapseThree" aria-expanded="true"
+                                                aria-controls="collapseThree">
+                                                <h4 class="card-title ">McLaren 720S</h4>
+                                                <p class="card-category">NT-595-G</p>
+                                            </div>
+
+                                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                                                data-parent="#accordion">
+                                                <div class="card-body">
+                                                    <div class="table-responsive">
+                                                        <table class="table">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        Color
+                                                                    </td>
+                                                                    <td>
+                                                                        Papaya
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        Purchase date
+                                                                    </td>
+                                                                    <td>
+                                                                        24-07-2022
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        Total km driven
+                                                                    </td>
+                                                                    <td>
+                                                                        2596
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        Average km/month
+                                                                    </td>
+                                                                    <td>
+                                                                        768km/month
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        Average €/month
+                                                                    </td>
+                                                                    <td>
+                                                                        €384/month
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="card-header card-header-danger" data-toggle="collapse"
+                                                data-target="#collapseFour" aria-expanded="true"
+                                                aria-controls="collapseFour">
+                                                <h4 class="card-title ">Mini Cooper S</h4>
+                                                <p class="card-category">SN-846-R</p>
+                                            </div>
+
+                                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
+                                                data-parent="#accordion">
+                                                <div class="card-body">
+                                                    <div class="table-responsive">
+                                                        <table class="table">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        Color
+                                                                    </td>
+                                                                    <td>
+                                                                        Steelblue
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        Purchase date
+                                                                    </td>
+                                                                    <td>
+                                                                        18-01-2021
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        Total km driven
+                                                                    </td>
+                                                                    <td>
+                                                                        81576
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        Average km/month
+                                                                    </td>
+                                                                    <td>
+                                                                        4078km/month
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        Average €/month
+                                                                    </td>
+                                                                    <td>
+                                                                        €2039/month
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
