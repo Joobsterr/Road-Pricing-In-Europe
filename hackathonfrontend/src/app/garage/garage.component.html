@@ -3,7 +3,57 @@
         <div class="card card-plain">
             <div class="row">
                 <div class="col-md-12">
-                    <button type="button" class="btn btn-success btn-block">Add new car</button>
+
+                    <button type="button" class="btn btn-success btn-block" data-toggle="modal"
+                        data-target="#newCarModal">
+                        Add new car
+                    </button>
+                    <div class="modal fade" id="newCarModal" tabindex="-1" role="dialog" aria-labelledby="newCarLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="newCarLabel">Adding new car</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="inputCarbrand">Brand</label>
+                                                <input type="text" class="form-control" id="inputCarbrand"
+                                                    placeholder="Carbrand">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="inputCartype">Type</label>
+                                                <input type="text" class="form-control" id="inputCartype"
+                                                    placeholder="Cartype">
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="inputCarcolor">Color</label>
+                                                <input type="text" class="form-control" id="inputCarcolor"
+                                                    placeholder="Carcolor">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="inputPurchasedate">Purchase date</label>
+                                                <input type="text" class="form-control" id="inputPurchasedate"
+                                                    placeholder="Purchase date">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                                    <button type="button" class="btn btn-success">Add new car</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="card-body">
                         <div id="accordion">
                             <div class="card">
@@ -46,7 +96,7 @@
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                Averagekm/month
+                                                                Average km/month
                                                             </td>
                                                             <td>
                                                                 2364km/month
@@ -104,7 +154,7 @@
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                Averagekm/month
+                                                                Average km/month
                                                             </td>
                                                             <td>
                                                                 5482km/month
@@ -162,7 +212,7 @@
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                Averagekm/month
+                                                                Average km/month
                                                             </td>
                                                             <td>
                                                                 768km/month
@@ -220,7 +270,7 @@
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                Averagekm/month
+                                                                Average km/month
                                                             </td>
                                                             <td>
                                                                 4078km/month
