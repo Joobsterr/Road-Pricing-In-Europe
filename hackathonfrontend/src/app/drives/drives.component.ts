@@ -18,7 +18,6 @@ export class DrivesComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-
     var myLatlng = new google.maps.LatLng(40.748817, -73.985428);
     var mapOptions = {
         zoom: 13,
