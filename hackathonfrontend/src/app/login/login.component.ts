@@ -1,5 +1,5 @@
 import { Component, OnInit, ɵclearResolutionOfComponentResourcesQueue } from '@angular/core';
-import {Router} from "@angular/router"
+import {Router} from '@angular/router'
 
 
 @Component({
@@ -8,25 +8,8 @@ import {Router} from "@angular/router"
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  username:string;
-  password:string;
-  constructor(public router:Router) { }
+  constructor(public router: Router) { }
 
   ngOnInit(): void {
-  }
-
-  Login()
-  {
-    if(this.username=="admin" && this.password=="password")
-    {
-      //complete login.
-      console.log("Login");
-      this.router.navigate(['/dashboard']);
-
-    }
-    else
-    {
-      console.log("Login Failed");
-    }
   }
 }

@@ -1,18 +1,14 @@
-
 <div class="main-content">
- 
     <div class="modal-body">
-    <form>
+    <form id="divElement">
         <div>
-        <label>UserName</label>
-            <input type="Text" name="userName"[(ngModel)]="username">
+            <input type="Text" name="userName" placeholder="username">
         </div>
         <div>
-           <label>Password</label>
-            <input type="password" name="password" [(ngModel)]="password">
+            <input type="password" name="password" placeholder="password" >
         </div>
         <div>
-            <input type="submit" value="Login"(click)="Login()">
+            <input type="submit" value="Login" href="/dashboard">
         </div>
         </form>
         </div>
