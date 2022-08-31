@@ -5,6 +5,7 @@ import { UserProfileComponent } from '../../user-profile/user-profile.component'
 import { BillingComponent } from '../../billing/billing.component';
 import { GarageComponent } from '../../garage/garage.component';
 import { DrivesComponent } from '../../drives/drives.component';
+import { RoadPricingComponent } from '../../road-pricing/road-pricing.component'
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -54,4 +55,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'billing',     component: BillingComponent },
     { path: 'garage',          component: GarageComponent },
     { path: 'drives',           component: DrivesComponent },
+    { path: 'road-pricing',           component: RoadPricingComponent },
 ];
