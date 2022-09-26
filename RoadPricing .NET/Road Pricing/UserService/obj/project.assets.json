@@ -302,11 +302,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Job\\Documents\\Semester 6\\Semester 6v2\\Road Pricing\\RoadPricing .NET\\Road Pricing\\UserService\\UserService.csproj",
+      "projectUniqueName": "C:\\Users\\Job\\Documents\\Semester 6\\Semester 6v2\\Road Pricing\\Road-Pricing-In-Europe\\RoadPricing .NET\\Road Pricing\\UserService\\UserService.csproj",
       "projectName": "UserService",
-      "projectPath": "C:\\Users\\Job\\Documents\\Semester 6\\Semester 6v2\\Road Pricing\\RoadPricing .NET\\Road Pricing\\UserService\\UserService.csproj",
+      "projectPath": "C:\\Users\\Job\\Documents\\Semester 6\\Semester 6v2\\Road Pricing\\Road-Pricing-In-Europe\\RoadPricing .NET\\Road Pricing\\UserService\\UserService.csproj",
       "packagesPath": "C:\\Users\\Job\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Job\\Documents\\Semester 6\\Semester 6v2\\Road Pricing\\RoadPricing .NET\\Road Pricing\\UserService\\obj\\",
+      "outputPath": "C:\\Users\\Job\\Documents\\Semester 6\\Semester 6v2\\Road Pricing\\Road-Pricing-In-Europe\\RoadPricing .NET\\Road Pricing\\UserService\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
