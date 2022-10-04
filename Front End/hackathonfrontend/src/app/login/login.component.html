@@ -16,13 +16,13 @@
 
                         <div class="form-group">
                             <label asp-for="Username"></label>
-                            <input class="form-control" placeholder="Username" asp-for="Username" autofocus>
+                            <input class="form-control" placeholder="Username" [(ngModel)]="username" asp-for="Username" autofocus>
                         </div>
                         <div class="form-group">
                             <label asp-for="Password"></label>
-                            <input type="password" class="form-control" placeholder="Password" asp-for="Password" autocomplete="off">
+                            <input type="password" class="form-control"[(ngModel)]="password" placeholder="Password" asp-for="Password" autocomplete="off">
                         </div>
-        <button class="btn btn-primary" name="button" value="login">Login</button>
+        <button class="btn btn-primary" name="button" value="login" (click)="Login()">Login</button>
         <button class="btn btn-secondary" name="button" value="cancel">Cancel</button>
     </form>
 </div>
