@@ -39,17 +39,17 @@
 
                         <div class="form-group">
                             <label asp-for="Username"></label>
-                            <input class="form-control" placeholder="Username" [(ngModel)]="username" asp-for="Username" autofocus>
+                            <input class="form-control" placeholder="Username" [(ngModel)]="rUsername" asp-for="Username" autofocus>
                         </div>
                         <div class="form-group">
                             <label asp-for="Password"></label>
-                            <input type="password" class="form-control"[(ngModel)]="password" placeholder="Password" asp-for="Password" autocomplete="off">
+                            <input type="password" class="form-control"[(ngModel)]="rPassword" placeholder="Password" asp-for="Password" autocomplete="off">
                         </div>
                         <div class="form-group">
                             <label asp-for="Username"></label>
-                            <input class="form-control" placeholder="BSN" [(ngModel)]="BSN" asp-for="Username" autofocus>
+                            <input class="form-control" placeholder="BSN" [(ngModel)]="BSN" asp-for="Username" type="number" autofocus>
                         </div>
-                        <button class="btn btn-primary" name="button" value="login" (click)="Register()">Register</button>
+                        <button class="btn btn-primary" name="button" value="register" (click)="Register()">Register</button>
                     </form>
                 </div>
             </div>

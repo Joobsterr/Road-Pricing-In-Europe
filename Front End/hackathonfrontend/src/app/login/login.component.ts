@@ -18,6 +18,8 @@ import {empty} from 'rxjs';
 export class LoginComponent implements OnInit {
   username: string;
   password: string;
+  rUsername: string;
+  rPassword: string;
   BSN: number;
   nPassword: string;
 
@@ -34,7 +36,6 @@ export class LoginComponent implements OnInit {
   Login() {
     const nUser = new UserDTO();
     nUser.userName = this.username;
-
     if (this.username == null || this.username.length === 0 || this.password == null || this.password.length === 0) {
       this._snackBar.open('Username or Password entered incorrectly', null, {duration: 5000,})
     } else {
@@ -53,15 +54,14 @@ export class LoginComponent implements OnInit {
   Register() {
     const nRegister = new RegisterDTO();
     nRegister.BSN = this.BSN;
-    nRegister.userName = this.username;
-    if (this.username == null || this.username.length === 0 || this.password == null || this.password.length === 0 || this.BSN == null) {
+    nRegister.userName = this.rUsername;
+    if (this.rUsername == null || this.rUsername.length === 0 || this.rPassword == null || this.rPassword.length === 0) {
       this._snackBar.open('Incorrect details entered', null, {duration: 5000,})
     } else {
-      nRegister.passWord = shajs('sha256').update(this.password).digest('hex');
-
+      nRegister.passWord = shajs('sha256').update(this.rPassword).digest('hex');
       this.appService.register(nRegister).subscribe({
         next: (response) => {
-          this.router.navigateByUrl('/dashboard');
+          window.location.reload();
         },
         error: (error) => {
           this._snackBar.open('One of the entered details is incorrect', null, {duration: 5000,})
