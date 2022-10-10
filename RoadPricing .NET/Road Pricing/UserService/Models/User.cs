@@ -21,7 +21,6 @@ namespace UserService.Models
             Username = username;
             Password = password;
         }
-
         public User()
         {
         }

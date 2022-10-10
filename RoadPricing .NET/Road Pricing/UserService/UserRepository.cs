@@ -32,11 +32,13 @@ namespace UserService
             List<User> users = await _dbContext.Users.ToListAsync();
             return users;
         }
+
         public async Task<User> Login(string userName, string passWord)
         {
             string hashWord = hasher.ComputeSha256Hash(passWord);
-            List<User> users = await _dbContext.Users.Where(x => x.Username == userName && x.Password == hashWord).ToListAsync();
-            return(users.First());
+            User user = await _dbContext.Users.Where(x => x.Username == userName
+            && x.Password == hashWord).FirstOrDefaultAsync();
+            return user;
         }
     }
 }

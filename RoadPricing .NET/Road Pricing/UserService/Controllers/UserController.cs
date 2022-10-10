@@ -26,16 +26,17 @@ namespace UserService.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login(string userName, string passWord)
+        public async Task<IActionResult> Login(UserDTO userDTO)
         { 
-           await _userRepository.Login(userName, passWord);
-           return Ok();
+           User user = await _userRepository.Login(userDTO.userName, userDTO.passWord);
+            if(user == default || user == null) { return BadRequest(); }
+            else { return Ok(user.Id);  }
             
         }
         [HttpPost("register")]
-        public async Task<IActionResult> Register(int bSN, string userName, string passWord)
+        public async Task<IActionResult> Register(RegisterDTO registerDTO)
         {
-            await _userRepository.Register(new User(bSN, userName, passWord));
+            await _userRepository.Register(new Models.User(registerDTO.BSN, registerDTO.userName, registerDTO.passWord));
             return Ok();
         }
     }

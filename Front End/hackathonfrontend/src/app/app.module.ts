@@ -10,6 +10,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { RoadPricingComponent } from './road-pricing/road-pricing.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { LoginComponent } from './login/login.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { LoginComponent } from './login/login.component';
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
+      MatSnackBarModule,
   ],
   declarations: [
     AppComponent,
