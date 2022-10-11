@@ -9,9 +9,9 @@ namespace RouteService.Controllers
     {
         public Models.RouteModel GetSpecificRoute(int id)
         {
-            return new Models.RouteModel();
+            return new RouteModel();
         }
-        public bool AddRoute(Models.RouteModel)
+        public bool AddRoute(RouteModel routeModel)
         {
             return true;
         }

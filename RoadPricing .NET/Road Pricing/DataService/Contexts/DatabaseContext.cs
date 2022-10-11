@@ -1,14 +1,15 @@
-﻿using BillingService.Models;
+﻿using DataService.DTO;
 using Microsoft.EntityFrameworkCore;
 
-namespace BillingService.DatabaseContext
+namespace DataService.DatabaseContext
 {
     public class DatabaseContext:DbContext
     {
-        public DbSet<Bill> bill { get; set; }
+        public DbSet<DataInputModel> DataInputModels { get; set; }
+        public DbSet<DataOutputModel> DataOutputModels { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var connectionString = "Server=localhost;Database=UserDB;User Id=sa; Password=Password1!;";
+            var connectionString = "Server=localhost;Database=DataDB;User Id=sa; Password=Password1!;";
             optionsBuilder.UseSqlServer(connectionString);
             optionsBuilder.LogTo(Console.WriteLine, LogLevel.Information);
             optionsBuilder.EnableSensitiveDataLogging();

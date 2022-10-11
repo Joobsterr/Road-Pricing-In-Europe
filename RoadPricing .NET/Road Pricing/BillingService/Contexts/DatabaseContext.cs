@@ -1,12 +1,11 @@
-﻿using DataService.DTO;
+﻿using BillingService.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace DataService.DatabaseContext
+namespace BillingService.DatabaseContext
 {
     public class DatabaseContext:DbContext
     {
-        public DbSet<DataInputModel> DataInputModel { get; set; }
-        public DbSet<DataOutputModel> DataOutputModel { get; set; }
+        public DbSet<Bill> Bills { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var connectionString = "Server=localhost;Database=UserDB;User Id=sa; Password=Password1!;";

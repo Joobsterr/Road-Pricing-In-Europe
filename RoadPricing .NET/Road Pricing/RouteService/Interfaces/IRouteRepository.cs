@@ -1,6 +1,6 @@
 ﻿namespace RouteService.Interfaces
 {
-    public interface IRepository
+    public interface IRouteRepository
     {
         Task<Route> GetRoutes();
         Task<Route> GetRoute(int carID);

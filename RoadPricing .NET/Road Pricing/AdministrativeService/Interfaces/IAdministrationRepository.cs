@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AdministrativeService.Interfaces
 {
-    public interface IPriceRepository
+    public interface IAdministrationRepository
     {
         Task<List<AdministrationPrices>> GetPrices();
         Task<ActionResult> UpdatePrice(decimal price,int priceID);
