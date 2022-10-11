@@ -1,3 +1,7 @@
+
+
+using BillingService.RabbitMQ;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -8,6 +12,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+RabbitMQListener.activateListeners();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
