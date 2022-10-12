@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "F:\\1download\\School\\GIT\\S6-RoadPricing\\Road-Pricing-In-Europe\\RoadPricing .NET\\Road Pricing\\DataService\\DataService.csproj": {}
+    "D:\\GIT-projects\\S6\\Road-Pricing-In-Europe\\RoadPricing .NET\\Road Pricing\\DataService\\DataService.csproj": {}
   },
   "projects": {
-    "F:\\1download\\School\\GIT\\S6-RoadPricing\\Road-Pricing-In-Europe\\RoadPricing .NET\\Road Pricing\\DataService\\DataService.csproj": {
+    "D:\\GIT-projects\\S6\\Road-Pricing-In-Europe\\RoadPricing .NET\\Road Pricing\\DataService\\DataService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\1download\\School\\GIT\\S6-RoadPricing\\Road-Pricing-In-Europe\\RoadPricing .NET\\Road Pricing\\DataService\\DataService.csproj",
+        "projectUniqueName": "D:\\GIT-projects\\S6\\Road-Pricing-In-Europe\\RoadPricing .NET\\Road Pricing\\DataService\\DataService.csproj",
         "projectName": "DataService",
-        "projectPath": "F:\\1download\\School\\GIT\\S6-RoadPricing\\Road-Pricing-In-Europe\\RoadPricing .NET\\Road Pricing\\DataService\\DataService.csproj",
-        "packagesPath": "C:\\Users\\odranJ\\.nuget\\packages\\",
-        "outputPath": "F:\\1download\\School\\GIT\\S6-RoadPricing\\Road-Pricing-In-Europe\\RoadPricing .NET\\Road Pricing\\DataService\\obj\\",
+        "projectPath": "D:\\GIT-projects\\S6\\Road-Pricing-In-Europe\\RoadPricing .NET\\Road Pricing\\DataService\\DataService.csproj",
+        "packagesPath": "C:\\Users\\nardo\\.nuget\\packages\\",
+        "outputPath": "D:\\GIT-projects\\S6\\Road-Pricing-In-Europe\\RoadPricing .NET\\Road Pricing\\DataService\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\odranJ\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\nardo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

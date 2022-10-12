@@ -39,11 +39,18 @@ namespace CarService.Controllers
             return true;
         }
 
+        /*
+         * input data for example:
+         * routingKey = testingBus (naar welke services moet het doorgestuurd worden?)
+         * message = testMessage, is this going through???
+         * exchange = topic_logs (dit kun je zien als het topic waar je over praat, bijvoorbeeld een gebruiker)
+         * type = topic (meerdere soorten beschikbaar, hier op dit moment topic gebruikt)
+         */
         [HttpPost("sendRabbitMessage")]
-        public async Task<IActionResult> SendRabbitMessage(string routingKey, string message)
+        public async Task<IActionResult> SendRabbitMessage(string routingKey, string message, string exchangeName, string type)
         {
-            _rabbitMQProducer.sendRabbitMessage(routingKey, message);
-            return Ok("Following message sent: " + routingKey + " : " + message);
+            _rabbitMQProducer.sendRabbitMessage(routingKey, message, exchangeName, type);
+            return Ok("Following message sent: " + exchangeName + " : " + type + " : " + routingKey + " : " + message);
         }
     }
 }

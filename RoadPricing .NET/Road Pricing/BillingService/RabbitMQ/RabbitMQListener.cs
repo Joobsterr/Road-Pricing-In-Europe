@@ -16,11 +16,11 @@ namespace BillingService.RabbitMQ
 
             channel.ExchangeDeclare(exchange: "topic_logs", type: "topic");
             // declare a server-named queue
-            var queueName = channel.QueueDeclare(queue: "").QueueName;
+            var queueName = channel.QueueDeclare(queue: "billingService").QueueName;
 
             // Add binding keys below here:
             List<string> bindingKeys = new List<string>();
-            bindingKeys.Add("secundaryTestingBus");
+            bindingKeys.Add("testingBus");
 
             foreach (var bindingKey in bindingKeys)
             {
