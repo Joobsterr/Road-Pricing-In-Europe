@@ -16,8 +16,8 @@ var app = builder.Build();
 
 // RabbitMQ listener
 // Onderstaande code werkt, maar is niet zo netjes...
-var exchangeKey = "testingExchange"; // You connect the listener to this exchange
-var bindingKey = "testingBus"; // The routing key, specifies the service you're talking tos
+var exchangeKey = "sumoData"; // You connect the listener to this exchange
+var bindingKey = "dataService"; // The routing key, specifies the service you're talking tos
 var inputType = "topic"; // Leave this one the same
 
 var factory = new ConnectionFactory() { HostName = "localhost" };

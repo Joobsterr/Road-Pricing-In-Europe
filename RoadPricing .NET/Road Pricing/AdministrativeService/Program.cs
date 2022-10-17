@@ -38,6 +38,7 @@ consumer.Received += (model, ea) =>
     var body = ea.Body.ToArray();
     var message = Encoding.UTF8.GetString(body);
     var routingKey = ea.RoutingKey;
+    // Do some extra stuff here on message received, like send to specific classes etc
     Console.WriteLine($" [x] Received '{routingKey}':'{message}'");
 };
 channel.BasicConsume(queue: queueName, autoAck: true, consumer: consumer);

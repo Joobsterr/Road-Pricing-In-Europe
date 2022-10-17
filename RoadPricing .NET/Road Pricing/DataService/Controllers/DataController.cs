@@ -7,18 +7,22 @@ namespace DataService.Controllers
     [Route("[controller]")]
     public class DataController : ControllerBase
     {
-        public DataOutputModel TransformInputData(DataInputModel)
+        [HttpGet("transformInputData")]
+        public async Task<IActionResult> TransformInputData(DataInputModel dataInputModel)
         {
-            // WIP
+            return Ok();
         }
 
-        public List<DataOutputModel> GetTransformedDataTimeFrame(TimeFrame)
+        [HttpGet("getTransformedDataTimeFrame")]
+        public async Task<IActionResult> GetTransformedDataTimeFrame(DateTime TimeFrame)
         {
-            // WIP
+            return Ok();
         }
 
-        public List<DataOutputModel> GetTransformedDataCar(CarId)
+        [HttpGet("getTransformedDataCar")]
+        public async Task<IActionResult> GetTransformedDataCar(int CarId)
         {
-            // WIP
+            return Ok();
         }
     }
+}
