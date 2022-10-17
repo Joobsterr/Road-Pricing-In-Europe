@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
       this.appService.login(nUser).subscribe({
         next: (response) => {
           this.router.navigateByUrl('/dashboard');
+          localStorage.setItem('ok', 'ok');
         },
         error: (error) => {
           this._snackBar.open('Credentials are incorrect', null, {duration: 5000,})

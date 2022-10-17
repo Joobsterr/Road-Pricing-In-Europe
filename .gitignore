@@ -1,5 +1,4 @@
 
-*.json
-*.props
-*.cache
-*.editorconfig
+RoadPricing .NET/Road Pricing/.vs/Road Pricing/v17/.suo
+*.v2
+*.v1
