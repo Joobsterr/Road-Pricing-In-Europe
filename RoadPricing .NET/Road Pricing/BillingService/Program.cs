@@ -17,24 +17,20 @@ var app = builder.Build();
 
 
 // Onderstaande code werkt, maar is niet zo netjes...
-Console.WriteLine("Adding new listener...");
+var exchangeKey = "testingExchange"; // You connect the listener to this exchange
+var bindingKey = "testingBus"; // De routing key, specifieerd de service waar je tegen praat
+var inputType = "topic"; // Leave this one the same
+
 var factory = new ConnectionFactory() { HostName = "localhost" };
 
 using var connection = factory.CreateConnection();
 using var channel = connection.CreateModel();
 
-channel.ExchangeDeclare(exchange: "topic_logs", type: "topic");
+channel.ExchangeDeclare(exchange: exchangeKey, type: inputType);
 // declare a server-named queue
 var queueName = channel.QueueDeclare(queue: "billingService").QueueName;
 
-// Add binding keys below here:
-List<string> bindingKeys = new List<string>();
-bindingKeys.Add("testingBus");
-
-foreach (var bindingKey in bindingKeys)
-{
-    channel.QueueBind(queue: queueName, exchange: "topic_logs", routingKey: bindingKey);
-}
+channel.QueueBind(queue: queueName, exchange: exchangeKey, routingKey: bindingKey);
 
 // Add listener so you get the messages
 var consumer = new EventingBasicConsumer(channel);
