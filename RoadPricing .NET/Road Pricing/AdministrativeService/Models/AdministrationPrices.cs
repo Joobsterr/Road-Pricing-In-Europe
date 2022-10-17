@@ -2,6 +2,7 @@
 {
     public class AdministrationPrices
     {
+        public int Id { get; set; }
         public string FuelType { get; set; }
         public string CarType { get; set; }
         public string RoadType { get; set; }
