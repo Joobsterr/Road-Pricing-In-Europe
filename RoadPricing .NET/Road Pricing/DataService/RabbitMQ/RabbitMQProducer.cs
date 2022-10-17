@@ -25,7 +25,7 @@ namespace CarService.RabbitMQ
             // Encoding the message
             var body = Encoding.UTF8.GetBytes(message);
             // Publisches the message on the specific topic
-            channel.BasicPublish(exchange: inputExchange, routingKey: routingKey, basicProperties: null, body: body);\
+            channel.BasicPublish(exchange: inputExchange, routingKey: routingKey, basicProperties: null, body: body);
         }
     }
 }
