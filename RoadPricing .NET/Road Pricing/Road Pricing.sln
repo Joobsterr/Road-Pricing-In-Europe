@@ -9,13 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserService", "UserService\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataService", "DataService\DataService.csproj", "{5D140F0D-09D4-4782-99D5-2A32C2318629}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarService", "CarService\CarService.csproj", "{D329AC71-7078-4A05-8187-F9735E936731}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarService", "CarService\CarService.csproj", "{D329AC71-7078-4A05-8187-F9735E936731}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdministrativeService", "AdministrativeService\AdministrativeService.csproj", "{A4BCB0C1-370C-4858-B315-00FCD3531258}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdministrativeService", "AdministrativeService\AdministrativeService.csproj", "{A4BCB0C1-370C-4858-B315-00FCD3531258}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BillingService", "BillingService\BillingService.csproj", "{CA6829D6-B36D-4981-9ACD-CCB7BC5660E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BillingService", "BillingService\BillingService.csproj", "{CA6829D6-B36D-4981-9ACD-CCB7BC5660E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RouteService", "RouteService\RouteService.csproj", "{91926678-E62B-4DD1-90FA-3AEAD76D5464}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RouteService", "RouteService\RouteService.csproj", "{91926678-E62B-4DD1-90FA-3AEAD76D5464}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
