@@ -8,15 +8,16 @@ import { DrivesComponent } from '../../drives/drives.component';
 import { RoadPricingComponent } from '../../road-pricing/road-pricing.component'
 import { LoginComponent} from '../../login/login.component';
 import {NotfoundComponent} from '../../notfound/notfound.component';
+import {AuthGuard} from '../../auth.guard';
 
 export const AdminLayoutRoutes: Routes = [
-    { path: 'dashboard',      component: DashboardComponent },
-    { path: 'user-profile',   component: UserProfileComponent },
-    { path: 'billing',     component: BillingComponent },
-    { path: 'garage',          component: GarageComponent },
-    { path: 'drives',           component: DrivesComponent },
-    { path: 'road-pricing',           component: RoadPricingComponent },
-    { path: 'login', component: LoginComponent },
+    { path: 'dashboard',      component: DashboardComponent, canActivate: [AuthGuard] },
+    { path: 'user-profile',   component: UserProfileComponent, canActivate: [AuthGuard] },
+    { path: 'billing',     component: BillingComponent, canActivate: [AuthGuard] },
+    { path: 'garage',          component: GarageComponent, canActivate: [AuthGuard] },
+    { path: 'drives',           component: DrivesComponent, canActivate: [AuthGuard] },
+    { path: 'road-pricing',           component: RoadPricingComponent, canActivate: [AuthGuard] },
+    { path: 'login', component: LoginComponent},
     { path: '**', redirectTo: '404'},
     { path: '404', component: NotfoundComponent}
 ];
