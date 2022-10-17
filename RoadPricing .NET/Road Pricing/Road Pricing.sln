@@ -9,13 +9,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserService", "UserService\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataService", "DataService\DataService.csproj", "{5D140F0D-09D4-4782-99D5-2A32C2318629}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarService", "CarService\CarService.csproj", "{D329AC71-7078-4A05-8187-F9735E936731}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarService", "CarService\CarService.csproj", "{D329AC71-7078-4A05-8187-F9735E936731}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdministrativeService", "AdministrativeService\AdministrativeService.csproj", "{A4BCB0C1-370C-4858-B315-00FCD3531258}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdministrativeService", "AdministrativeService\AdministrativeService.csproj", "{A4BCB0C1-370C-4858-B315-00FCD3531258}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BillingService", "BillingService\BillingService.csproj", "{CA6829D6-B36D-4981-9ACD-CCB7BC5660E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BillingService", "BillingService\BillingService.csproj", "{CA6829D6-B36D-4981-9ACD-CCB7BC5660E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RouteService", "RouteService\RouteService.csproj", "{91926678-E62B-4DD1-90FA-3AEAD76D5464}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RouteService", "RouteService\RouteService.csproj", "{91926678-E62B-4DD1-90FA-3AEAD76D5464}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ocelot", "Ocelot", "{B029D498-8D00-4385-9BB9-20DBCDC971AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcelotApiGw", "OcelotApiGw\OcelotApiGw.csproj", "{7C95D675-295D-4841-9C50-D38404C626B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +51,10 @@ Global
 		{91926678-E62B-4DD1-90FA-3AEAD76D5464}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91926678-E62B-4DD1-90FA-3AEAD76D5464}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91926678-E62B-4DD1-90FA-3AEAD76D5464}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C95D675-295D-4841-9C50-D38404C626B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C95D675-295D-4841-9C50-D38404C626B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C95D675-295D-4841-9C50-D38404C626B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C95D675-295D-4841-9C50-D38404C626B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,6 +66,7 @@ Global
 		{A4BCB0C1-370C-4858-B315-00FCD3531258} = {C46750EA-7384-4EC8-AA77-D160B24BB5B7}
 		{CA6829D6-B36D-4981-9ACD-CCB7BC5660E0} = {C46750EA-7384-4EC8-AA77-D160B24BB5B7}
 		{91926678-E62B-4DD1-90FA-3AEAD76D5464} = {C46750EA-7384-4EC8-AA77-D160B24BB5B7}
+		{7C95D675-295D-4841-9C50-D38404C626B7} = {B029D498-8D00-4385-9BB9-20DBCDC971AF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {01D1D2BF-DB59-4837-AF38-D2C693A8238C}
