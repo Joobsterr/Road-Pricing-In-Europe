@@ -8,12 +8,13 @@ namespace AdministrativeService.Controllers
     [Route("[controller]")]
     public class AdministrationController : ControllerBase
     {
-        private readonly IAdministartionService _administrativeService;
+        private readonly IAdministrationService _administrativeService;
 
-        public AdministrationController(IAdministartionService administartionService)
+        public AdministrationController(IAdministrationService administartionService)
         {
             _administrativeService = administartionService;
         }
+        [HttpGet("FilterPrices")]
         public List<AdministrationPrices> FilterAdministrationPrices(string fuelType, string carType, string roadType, DateOnly timeFrame)
         {
             return new List<AdministrationPrices>();

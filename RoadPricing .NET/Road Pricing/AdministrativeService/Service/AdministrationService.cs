@@ -5,10 +5,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AdministrativeService.Service
 {
-    public class AdministrationService : IAdministartionService
+    public class AdministrationService : IAdministrationService
     {
-        private readonly IAdministratieRepository _administratieRepository;
-        public AdministrationService(IAdministratieRepository administratieRepository)
+        private readonly IAdministrationRepository _administratieRepository;
+        public AdministrationService(IAdministrationRepository administratieRepository)
         {
             _administratieRepository = administratieRepository;
         }

@@ -1,12 +1,13 @@
 ﻿using AdministrativeService.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AdministrativeService.Repository
+namespace AdministrativeService.Service
 {
-    public interface IAdministratieRepository
+    public interface IAdministrationService
     {
-        Task<ActionResult> PostPrice(AdministrationPrices administrationPrices);
+        Task<ActionResult> CreateNewPrice(AdministrationPrices administrationPrices);
         Task<ActionResult> UpdatePrice(int id, AdministrationPrices administrationPrices);
         Task<List<AdministrationPrices>> GetAllPrices();
+
     }
 }

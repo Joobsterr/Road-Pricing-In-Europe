@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AdministrativeService.Repository
 {
-    public class AdministartionRepository:IAdministratieRepository
+    public class AdministrationRepository : IAdministrationRepository
     {
         private readonly DatabaseContext _databaseContext;
-        public AdministartionRepository(DatabaseContext databaseContext)
+        public AdministrationRepository(DatabaseContext databaseContext)
         {
             _databaseContext = databaseContext;
         }
