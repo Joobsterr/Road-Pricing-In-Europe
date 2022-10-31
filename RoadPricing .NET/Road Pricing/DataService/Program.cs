@@ -1,8 +1,10 @@
+using DataService;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
+DataProcessingService dataProcessingService = new DataProcessingService(new DataRepository());
 
 // Add services to the container.
 
@@ -10,6 +12,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<IDataRepository, DataRepository>();
+builder.Services.AddScoped<IDataProcessingService, DataProcessingService>();
 
 var app = builder.Build();
 
@@ -39,7 +43,10 @@ consumer.Received += (model, ea) =>
     var message = Encoding.UTF8.GetString(body);
     var routingKey = ea.RoutingKey;
     // Do some extra stuff here on message received, like send to specific classes etc
-    Console.WriteLine($" [x] Received '{routingKey}':'{message}'");
+    dataProcessingService.newDataInput(message);
+
+    // Just in case you want to see the message, uncomment this line:
+    // Console.WriteLine($" [x] Received '{routingKey}':'{message}'");
 };
 channel.BasicConsume(queue: queueName, autoAck: true, consumer: consumer);
 // t/m hier

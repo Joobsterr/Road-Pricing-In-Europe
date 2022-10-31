@@ -7,16 +7,25 @@ namespace DataService.Controllers
     [Route("[controller]")]
     public class DataController : ControllerBase
     {
-        [HttpGet("transformInputData")]
-        public async Task<IActionResult> TransformInputData(DataInputModel dataInputModel)
+        private readonly IDataProcessingService _dataService;
+
+        public DataController(IDataProcessingService dataService)
         {
-            return Ok();
+            _dataService = dataService;
         }
 
-        [HttpGet("getTransformedDataTimeFrame")]
-        public async Task<IActionResult> GetTransformedDataTimeFrame(DateTime TimeFrame)
+        [HttpGet("getAllDataPoints")]
+        public async Task<IActionResult> GetAllDataPoints()
         {
-            return Ok();
+            List<DataModel> datapoints = _dataService.getAllDataPoints();
+            return Ok(datapoints);
+        }
+
+        [HttpGet("getDataPointsPerCar")]
+        public async Task<IActionResult> getDataPointsPerCar(int carId)
+        {
+            List<DataModel> datapoints = _dataService.getDataPointsPerCar(carId);
+            return Ok(datapoints);
         }
 
         [HttpGet("getTransformedDataCar")]

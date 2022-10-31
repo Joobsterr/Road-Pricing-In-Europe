@@ -8,12 +8,15 @@ import traci
 import traci.constants as tc
 import pika#chu
 import sys
+import json
+from datetime import datetime
 
 # Methods
-def sendData(carId, lat: str, lon: str):
+def sendData(carId, lat, lon, dateTimeNowString):
     exchangeKey = 'sumoData'
     routingKey = 'dataService'
-    message = "Vehicle [" + carId + "] lat: " + lat + " || lon: " + lon
+    message = '{ "carId":' + carId + ', "latitude":' + lat + ', "longitude":' + lon + ', "timeStamp":"' + dateTimeNowString + '"}'
+    print(message)
 
     connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
     channel = connection.channel()
@@ -30,8 +33,15 @@ if 'SUMO_HOME' in os.environ:
 else:
     sys.exit("please declare environment variable 'SUMO_HOME'")
 
+# Nardo's laptop config
+# sumoExecutable = "D:/Program Files (x86)/Eclipse/Sumo/bin/SUMO-gui.exe"
+# sumoConfigFile = "D:/GIT-projects/S6/Road-Pricing-In-Europe/TraCI Script/minimap.sumo.cfg"
+
+# Nardo's PC config
 sumoExecutable = "D:/Program Files (x86)/Eclipse/Sumo/bin/SUMO-gui.exe"
-sumoConfigFile = "D:/GIT-projects/S6/Road-Pricing-In-Europe/TraCI Script/minimap.sumo.cfg"
+sumoConfigFile = "F:/1download/School/GIT/S6-RoadPricing/Road-Pricing-In-Europe/TraCI Script/minimap.sumo.cfg"
+
+
 simulationDuration = 1000
 
 sumoCmd = [sumoExecutable, "-c", sumoConfigFile]
@@ -42,10 +52,11 @@ step = 0
 while step < simulationDuration:
     traci.simulationStep()
     if step%10 == 0:
+        dateTimeNowString = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
         for carId in traci.vehicle.getIDList():
             x, y = traci.vehicle.getPosition(carId)
             lon, lat = traci.simulation.convertGeo(x, y)
-            sendData(str(carId), str(lat), str(lon))
+            sendData(str(carId), str(lat), str(lon), dateTimeNowString)
     step += 1
 
 traci.close()
