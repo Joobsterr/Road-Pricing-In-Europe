@@ -17,11 +17,9 @@ namespace DataService
             // Doing this so that the date is valid, otherwise the date would be 1-1-0001 00:00:00
             DataDTO? dataInputDto = JsonSerializer.Deserialize<DataDTO>(dataInputString);
 
-            // Generating new UUID for dataInputModel
-            Guid myuuid = Guid.NewGuid();
             Tuple<double, double> lat_long = new Tuple<double, double>(dataInputDto.latitude, dataInputDto.longitude);
 
-            DataModel dataInputModel = new DataModel(myuuid, dataInputDto.carId, lat_long, DateTime.Parse(dataInputDto.timeStamp));
+            DataModel dataInputModel = new DataModel(dataInputDto.carId, lat_long, DateTime.Parse(dataInputDto.timeStamp));
             _repository.enterDataPoint(dataInputModel);
         }
 
@@ -33,6 +31,11 @@ namespace DataService
         public List<DataModel> getDataPointsPerCar(int carId)
         {
             return _repository.getDataPointsPerCar(carId);
+        }
+
+        public List<DataModel> getDataPointsPerCarWithTimeframe(int carId, DateTime startDate, DateTime endDate)
+        {
+            return _repository.getDataPointsPerCarWithTimeframe(carId, startDate, endDate);
         }
     }
 }

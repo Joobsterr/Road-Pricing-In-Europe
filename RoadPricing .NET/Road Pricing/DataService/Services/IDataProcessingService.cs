@@ -7,5 +7,6 @@ namespace DataService
         void newDataInput(string dataInputString);
         List<DataModel> getAllDataPoints();
         List<DataModel> getDataPointsPerCar(int carId);
+        List<DataModel> getDataPointsPerCarWithTimeframe(int carId, DateTime startDate, DateTime endDate);
     }
 }

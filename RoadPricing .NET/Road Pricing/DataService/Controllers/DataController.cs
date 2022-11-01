@@ -28,10 +28,11 @@ namespace DataService.Controllers
             return Ok(datapoints);
         }
 
-        [HttpGet("getTransformedDataCar")]
-        public async Task<IActionResult> GetTransformedDataCar(int CarId)
+        [HttpGet("getDataPointsPerCarWithTimeframe")]
+        public async Task<IActionResult> getDataPointsPerCarWithTimeframe(int carId, DateTime startDate, DateTime endDate)
         {
-            return Ok();
+            List<DataModel> datapoints = _dataService.getDataPointsPerCarWithTimeframe(carId, startDate, endDate);
+            return Ok(datapoints);
         }
     }
 }
