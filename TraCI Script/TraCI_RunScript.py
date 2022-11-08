@@ -11,19 +11,32 @@ import sys
 import json
 from datetime import datetime
 
+class dataModel: 
+    def __init__(self, carId, lat, lon, dateTimeNow, routeId): 
+        self.carId = carId
+        self.lat = lat
+        self.lon = lon
+        self.dateTimeNow = dateTimeNow
+        self.routeId = routeId
+    
+    def dump(self):
+        return {'carId': int(self.carId),
+                               'latitude': self.lat,
+                               'longitude': self.lon,
+                               'timeStamp': self.dateTimeNow,
+                               'routeId': int(self.routeId)}
+        
 # Methods
-def sendData(carId, lat, lon, dateTimeNowString):
+def sendData(messageBody):
     exchangeKey = 'sumoData'
     routingKey = 'dataService'
-    message = '{ "carId":' + carId + ', "latitude":' + lat + ', "longitude":' + lon + ', "timeStamp":"' + dateTimeNowString + '"}'
-    print(message)
 
     connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
     channel = connection.channel()
 
     channel.exchange_declare(exchange=exchangeKey, exchange_type='topic')
 
-    channel.basic_publish(exchange=exchangeKey, routing_key=routingKey, body=message)
+    channel.basic_publish(exchange=exchangeKey, routing_key=routingKey, body=json.dumps([o.dump() for o in messageBody], indent=3))
     connection.close()
 
 # Main
@@ -33,31 +46,36 @@ if 'SUMO_HOME' in os.environ:
 else:
     sys.exit("please declare environment variable 'SUMO_HOME'")
 
+
 # Nardo's laptop config
 # sumoExecutable = "D:/Program Files (x86)/Eclipse/Sumo/bin/SUMO-gui.exe"
-# sumoConfigFile = "D:/GIT-projects/S6/Road-Pricing-In-Europe/TraCI Script/minimap.sumo.cfg"
 
 # Nardo's PC config
 sumoExecutable = "D:/Program Files (x86)/Eclipse/Sumo/bin/SUMO-gui.exe"
-sumoConfigFile = "F:/1download/School/GIT/S6-RoadPricing/Road-Pricing-In-Europe/TraCI Script/minimap.sumo.cfg"
 
 
-simulationDuration = 1000
+sumoConfigFile = "minimap.sumo.cfg"
+maxVehiclesInSimulation = "500"
+simulationDuration = 50000
 
-sumoCmd = [sumoExecutable, "-c", sumoConfigFile]
-
+sumoCmd = ([sumoExecutable, 
+            "-c", sumoConfigFile, 
+            "--max-num-vehicles", maxVehiclesInSimulation])
 
 traci.start(sumoCmd)
 step = 0
 while step < simulationDuration:
     traci.simulationStep()
-    if step%10 == 0:
+    if step%50 == 0:
         dateTimeNowString = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
+        vehicleDataList = []
         for carId in traci.vehicle.getIDList():
+            routeString = traci.vehicle.getRouteID(carId)
+            routeId = routeString[1:]
             x, y = traci.vehicle.getPosition(carId)
             lon, lat = traci.simulation.convertGeo(x, y)
-            sendData(str(carId), str(lat), str(lon), dateTimeNowString)
+            vehicleDataList.append( dataModel(carId, lat, lon, dateTimeNowString, routeId))
+        
+        sendData(vehicleDataList)
     step += 1
-
 traci.close()
-

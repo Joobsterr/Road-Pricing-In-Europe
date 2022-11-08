@@ -4,7 +4,7 @@ namespace DataService
 {
     public interface IDataRepository
     {
-        void enterDataPoint(DataModel jsonMessage);
+        void enterDataPoint(List<DataModel> dataModels);
         List<DataModel> getAllDataPoints();
         List<DataModel> getDataPointsPerCar(int carId);
         List<DataModel> getDataPointsPerCarWithTimeframe(int carId, DateTime startDate, DateTime endDate);

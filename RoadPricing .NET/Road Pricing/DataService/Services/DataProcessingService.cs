@@ -15,12 +15,17 @@ namespace DataService
         public void newDataInput(string dataInputString)
         {
             // Doing this so that the date is valid, otherwise the date would be 1-1-0001 00:00:00
-            DataDTO? dataInputDto = JsonSerializer.Deserialize<DataDTO>(dataInputString);
+            List<DataDTO> dataInputDto = JsonSerializer.Deserialize<List<DataDTO>>(dataInputString);
+            List<DataModel> dataModels = new List<DataModel>();
 
-            Tuple<double, double> lat_long = new Tuple<double, double>(dataInputDto.latitude, dataInputDto.longitude);
+            foreach (DataDTO dataDTO in dataInputDto)
+            {
+                Console.WriteLine(dataDTO.carId);
+                Console.WriteLine(dataDTO.timeStamp);
+                dataModels.Add(new DataModel(dataDTO.carId, new Tuple<double, double>(dataDTO.latitude, dataDTO.longitude), DateTime.Parse(dataDTO.timeStamp), dataDTO.routeId));
+            }
 
-            DataModel dataInputModel = new DataModel(dataInputDto.carId, lat_long, DateTime.Parse(dataInputDto.timeStamp));
-            _repository.enterDataPoint(dataInputModel);
+            _repository.enterDataPoint(dataModels);
         }
 
         public List<DataModel> getAllDataPoints()

@@ -26,17 +26,20 @@ namespace DataService
             WriteSession = cluster.Connect();
         }
 
-        public void enterDataPoint(DataModel jsonMessage)
+        public void enterDataPoint(List<DataModel> dataModels)
         {
-            // Format data for database
-            var latitude = jsonMessage.lat_long.Item1.ToString().Replace(",", ".");
-            var longitude = jsonMessage.lat_long.Item2.ToString().Replace(",", ".");
-            var timeStamp = jsonMessage.dateTimeStamp.ToString("yyyy-MM-ddTHH:mm:ss");
+            foreach (DataModel dataModel in dataModels)
+            {
+                // Format data for database
+                var latitude = dataModel.lat_long.Item1.ToString().Replace(",", ".");
+                var longitude = dataModel.lat_long.Item2.ToString().Replace(",", ".");
+                var timeStamp = dataModel.dateTimeStamp.ToString("yyyy-MM-ddTHH:mm:ss");
 
-            string query = "INSERT INTO sumo.datapoints (car_id, lat_long, time_stamp)" +
-                "VALUES(" + jsonMessage.carId + ",(" + latitude + "," + longitude + "),'" + timeStamp + "');";
+                string query = "INSERT INTO sumo.datapoints (car_id, lat_long, time_stamp, route_id)" +
+                    "VALUES(" + dataModel.carId + ",(" + latitude + "," + longitude + "),'" + timeStamp + "', " + dataModel.routeId + ");";
 
-            WriteSession.Execute(query);
+                WriteSession.Execute(query);
+            }
         }
 
         public List<DataModel> getAllDataPoints()
@@ -53,7 +56,8 @@ namespace DataService
                 DataModel dataModel = new DataModel(
                     row.GetValue<int>("car_id"),
                     row.GetValue<Tuple<Double, Double>>("lat_long"),
-                    row.GetValue<DateTime>("time_stamp")); ;
+                    row.GetValue<DateTime>("time_stamp"),
+                    row.GetValue<int>("route_id")); ;
 
                 dataPoints.Add(dataModel);
             }
@@ -75,7 +79,8 @@ namespace DataService
                 DataModel dataModel = new DataModel(
                     row.GetValue<int>("car_id"),
                     row.GetValue<Tuple<Double, Double>>("lat_long"),
-                    row.GetValue<DateTime>("time_stamp")); ;
+                    row.GetValue<DateTime>("time_stamp"),
+                    row.GetValue<int>("route_id")); ;
 
                 dataPoints.Add(dataModel);
             }
@@ -100,7 +105,8 @@ namespace DataService
                 DataModel dataModel = new DataModel(
                     row.GetValue<int>("car_id"),
                     row.GetValue<Tuple<Double, Double>>("lat_long"),
-                    row.GetValue<DateTime>("time_stamp")); ;
+                    row.GetValue<DateTime>("time_stamp"),
+                    row.GetValue<int>("route_id")); ;
 
                 dataPoints.Add(dataModel);
             }
