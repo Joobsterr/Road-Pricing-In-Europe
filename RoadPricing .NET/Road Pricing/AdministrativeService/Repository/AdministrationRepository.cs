@@ -53,7 +53,7 @@ namespace AdministrativeService.Repository
                     updatePrice.FuelType = administrationPrices.FuelType;
                     updatePrice.Price = administrationPrices.Price;
                     updatePrice.RoadType = administrationPrices.RoadType;
-                    updatePrice.Timeframe = administrationPrices.Timeframe;
+                   // updatePrice.Timeframe = administrationPrices.Timeframe;
                     updatePrice.CarType = administrationPrices.CarType;
                     await _databaseContext.SaveChangesAsync();
                 }

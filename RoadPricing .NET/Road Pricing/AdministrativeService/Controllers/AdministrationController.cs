@@ -20,8 +20,14 @@ namespace AdministrativeService.Controllers
             return new List<AdministrationPrices>();
         }
 
+        [HttpPost("message")]
+        public void message()
+        {
+            Console.WriteLine("Oke");
+        }
+
         [HttpPost("CreateNewPrice")]
-        public async Task<ActionResult> CreatePrice([FromBody] AdministrationPrices administrationPrices)
+        public async Task<ActionResult> CreatePrice(AdministrationPrices administrationPrices)
         {
             return await _administrativeService.CreateNewPrice(administrationPrices);
         }
