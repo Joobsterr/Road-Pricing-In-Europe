@@ -21,10 +21,10 @@ namespace DataService.Controllers
             return Ok(datapoints);
         }
 
-        [HttpGet("getDataPointsPerCar")]
-        public async Task<IActionResult> getDataPointsPerCar(int carId)
+        [HttpGet("getDataPointsPerCarPerRoute")]
+        public async Task<IActionResult> getDataPointsPerCarPerRoute(int carId, int routeId)
         {
-            List<DataModel> datapoints = _dataService.getDataPointsPerCar(carId);
+            List<DataModel> datapoints = _dataService.getDataPointsPerCarPerRoute(carId, routeId);
             return Ok(datapoints);
         }
 

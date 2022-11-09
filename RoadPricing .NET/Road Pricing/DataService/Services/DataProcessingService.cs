@@ -31,9 +31,9 @@ namespace DataService
             return _repository.getAllDataPoints();
         }
 
-        public List<DataModel> getDataPointsPerCar(int carId)
+        public List<DataModel> getDataPointsPerCarPerRoute(int carId, int routeId)
         {
-            return _repository.getDataPointsPerCar(carId);
+            return _repository.getDataPointsPerCarPerRoute(carId, routeId);
         }
 
         public List<DataModel> getDataPointsPerCarWithTimeframe(int carId, DateTime startDate, DateTime endDate)

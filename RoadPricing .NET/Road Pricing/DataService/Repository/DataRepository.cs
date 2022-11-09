@@ -66,11 +66,11 @@ namespace DataService
             return dataPoints;
         }
 
-        public List<DataModel> getDataPointsPerCar(int carId)
+        public List<DataModel> getDataPointsPerCarPerRoute(int carId, int routeId)
         {
             var session = Cluster.Connect();
 
-            string query = "SELECT * FROM sumo.datapoints WHERE car_id = " + carId + ";";
+            string query = "SELECT * FROM sumo.datapoints WHERE car_id = " + carId + " AND route_id = " + routeId + ";";
 
             RowSet rowset = session.Execute(query);
 
