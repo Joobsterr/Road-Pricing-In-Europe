@@ -12,19 +12,21 @@ import json
 from datetime import datetime
 
 class dataModel: 
-    def __init__(self, carId, lat, lon, dateTimeNow, routeId): 
+    def __init__(self, carId, lat, lon, dateTimeNow, routeId, laneMaxSpeedMs): 
         self.carId = carId
         self.lat = lat
         self.lon = lon
         self.dateTimeNow = dateTimeNow
         self.routeId = routeId
+        self.laneMaxSpeedMs = laneMaxSpeedMs
     
     def dump(self):
         return {'carId': int(self.carId),
                                'latitude': self.lat,
                                'longitude': self.lon,
                                'timeStamp': self.dateTimeNow,
-                               'routeId': int(self.routeId)}
+                               'routeId': int(self.routeId),
+                               'laneMaxSpeedMs': int(self.laneMaxSpeedMs)}
         
 # Methods
 def sendData(messageBody):
@@ -74,7 +76,10 @@ while step < simulationDuration:
             routeId = routeString[1:]
             x, y = traci.vehicle.getPosition(carId)
             lon, lat = traci.simulation.convertGeo(x, y)
-            vehicleDataList.append( dataModel(carId, lat, lon, dateTimeNowString, routeId))
+            laneId = traci.vehicle.getLaneID(carId)
+            laneMaxSpeedMs = traci.lane.getMaxSpeed(laneId)
+
+            vehicleDataList.append(dataModel(carId, lat, lon, dateTimeNowString, routeId, laneMaxSpeedMs))
         
         sendData(vehicleDataList)
     step += 1
