@@ -1,26 +1,30 @@
-﻿namespace CarService.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace CarService.Models
 {
     public class Car
     {
-        public int LicenseplateId { get; set; }
-        public int OwnerId { get; set; }
+        [Required, Key]
         public string Licenseplate { get; set; }
+        [Required]
+        public int OwnerId { get; set; }
+        [Required]
         public string CarType { get; set; }
+        [Required]
         public string CarBrand { get; set; }
+        [Required]
         public string Color { get; set; }
-        public DateOnly PurchaseDate { get; set; }
-        public Double TotalKm { get; set; }
+        [Required]
+        public DateTime PurchaseDate { get; set; }
 
-        public Car(int licenseplateId, int ownerId, string licenseplate, string carType, string carBrand, string color, DateOnly purchaseDate, double totalKm)
+        public Car(string licenseplate, int ownerId, string carType, string carBrand, string color, DateTime purchaseDate)
         {
-            LicenseplateId = licenseplateId;
-            OwnerId = ownerId;
             Licenseplate = licenseplate;
+            OwnerId = ownerId;
             CarType = carType;
             CarBrand = carBrand;
             Color = color;
             PurchaseDate = purchaseDate;
-            TotalKm = totalKm;
         }
 
         public Car()

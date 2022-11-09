@@ -4,6 +4,7 @@ namespace CarService.Interfaces
 {
     public interface ICarRepository
     {
-        Car getAllCars();
+        Task<Car> addNewCar(string Licenseplate, int userID);
+        Task<List<Car>> getAllCars();
     }
 }

@@ -1,27 +1,36 @@
 using Microsoft.AspNetCore.Mvc;
 using CarService.Models;
+using CarService.Interfaces;
+using System.Collections.Generic;
+using CarService.DTO;
 
 namespace CarService.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("/api/[controller]")]
     public class CarController : ControllerBase
     {
-        public Car GetSpecificCar(string Licenseplate)
+        public readonly ICarRepository _carRepository;
+
+        public CarController(ICarRepository carRepository)
         {
-            return new Car();
+            _carRepository = carRepository;
         }
-        public List<Car> GetAllOwnerCars(int OwnerId)
+        [HttpGet("getAllCars")]
+        public async Task<List<Car>> getAllCars()
         {
-            return new List<Car>();
+            List<Car> cars = await _carRepository.getAllCars();
+            return cars;
         }
-        public bool AddNewCar(int OwnerId, Car nCar)
+        [HttpPost("addNewCar")]
+        public async Task<IActionResult> addNewCar(string Licenseplate, int userID)
         {
-            return true;
-        }
-        public bool DeleteCar(int OwnerId, int CarId)
-        {
-            return true;
+            Car c = await _carRepository.addNewCar(Licenseplate, userID);
+            if(c == default)
+            {
+                return Ok(new ApiResponse<string>(false, "Deze auto kan niet worden toegevoegd"));
+            }
+            else { return Ok(new ApiResponse<Car>(true, c)); }
         }
     }
 }
