@@ -36,7 +36,7 @@ namespace BillingService.Controllers
         {
             double resultPrice = _billService.GeneratePriceForTrip(datapoints);
 
-            return Ok(resultPrice)
+            return Ok(resultPrice);
         }
 
     }
