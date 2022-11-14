@@ -6,5 +6,6 @@ namespace CarService.Interfaces
     {
         Task<Car> addNewCar(string Licenseplate, int userID);
         Task<List<Car>> getAllCars();
+        Task<List<Car>> getCarsAsync(int userID);
     }
 }

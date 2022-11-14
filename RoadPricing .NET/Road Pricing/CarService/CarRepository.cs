@@ -32,6 +32,10 @@ namespace CarService
             catch { return default(Car); }
 
         }
-
+        public async Task<List<Car>> getCarsAsync(int userID)
+        {
+            List<Car> cars = await _dbContext.Cars.Where(x => x.OwnerId == userID).ToListAsync();
+            return cars;
+        }
     }
 }

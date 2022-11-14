@@ -20,7 +20,7 @@ namespace CarService.Workers
             if (responseString != null)
             {
                 List<RDWCar> rdwCar = JsonSerializer.Deserialize<List<RDWCar>>(responseString);
-                Car c = new Car(LicensePlate, userID, rdwCar.First().voertuigsoort, rdwCar.First().merk, rdwCar.First().eerste_kleur, DateTime.ParseExact(rdwCar.First().datum_tenaamstelling, format, provider));
+                Car c = new Car(LicensePlate, userID, rdwCar.First().handelsbenaming, rdwCar.First().merk, rdwCar.First().eerste_kleur, DateTime.ParseExact(rdwCar.First().datum_tenaamstelling, format, provider));
                 return c;
             }
             else { return new Car(); }

@@ -31,4 +31,7 @@ export class AppService {
     licenseDTO.Licenseplate = Licenseplate;
     return this.http.post(this.rootUrl + '/Car/addNewCar', licenseDTO)
   }
+  getCarsByUser(userID: string) {
+    return this.http.get(this.rootUrl + '/Car/getCarsByUser/' + userID)
+  }
 }

@@ -12,7 +12,7 @@ export class AuthService {
     ) {
     }
     get isLoggedIn(): boolean {
-        const authToken = localStorage.getItem('ok');
+        const authToken = localStorage.getItem('userID');
         if (authToken == null) {
             return false;
         }

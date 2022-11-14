@@ -36,7 +36,7 @@ export class NavbarComponent implements OnInit {
         });
     }
     doLogout() {
-        localStorage.removeItem('ok');
+        localStorage.removeItem('userID');
         this.router.navigateByUrl('/login');
     }
     sidebarOpen() {

@@ -35,6 +35,18 @@
       ],
       "UpstreamPathTemplate": "/api/car/addNewCar",
       "UpstreamHttpMethod": [ "Post" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/car/getCarsByUser",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7027
+        }
+      ],
+      "UpstreamPathTemplate": "/api/car/getCarsByUser",
+      "UpstreamHttpMethod": [ "Post" ]
     }
   ],
 

@@ -28,9 +28,15 @@ namespace CarService.Controllers
             Car c = await _carRepository.addNewCar(licenseDTO.Licenseplate, licenseDTO.userID);
             if(c == default)
             {
-                return Ok(new ApiResponse<string>(false, "Deze auto kan niet worden toegevoegd"));
+                return Ok(new ApiResponse<string>(false, "This car cannot be added"));
             }
             else { return Ok(new ApiResponse<Car>(true, c)); }
+        }
+        [HttpGet("getCarsByUser/{userID}")]
+        public async Task<List<Car>> getCarsAsync(int userID)
+        {
+            List<Car> cars = await _carRepository.getCarsAsync(userID);
+            return cars;
         }
     }
 }
