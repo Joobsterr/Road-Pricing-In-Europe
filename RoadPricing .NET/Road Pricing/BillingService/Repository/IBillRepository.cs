@@ -1,9 +1,11 @@
-﻿using BillingService.Models.DTO;
+﻿using BillingService.Models;
+using BillingService.Models.DTO;
 
 namespace BillingService.Repository
 {
     public interface IBillRepository
     {
-        bool AddTripToBill(Trip trip, int userBsn);
+        bool AddTripToBill(int userId, Trip trip);
+        List<Bill> GetUserBills(int userId);
     }
 }

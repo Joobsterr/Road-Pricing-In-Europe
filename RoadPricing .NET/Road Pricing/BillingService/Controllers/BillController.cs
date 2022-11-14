@@ -16,16 +16,17 @@ namespace BillingService.Controllers
             _billService = billService;
         }
 
-        [HttpGet("getSpecificBills")]
-        public List<Bill> FilterBills(string Month, string Year)
+        [HttpGet("getUserBills")]
+        public async Task<IActionResult> GetUserBills(int userId)
         {
-            return new List<Bill>();
+            List<Bill> userBills = _billService.GetUserBills(userId);
+            return Ok(userBills);
         }
 
         [HttpPost("addTripToBill")]
-        public async Task<IActionResult> AddTripToBill(List<DataModel> datapoints, int userBsn)
+        public async Task<IActionResult> AddTripToBill(int userId, List<DataModel> datapoints)
         {
-            bool result = _billService.AddTripToBill(datapoints, userBsn);
+            bool result = _billService.AddTripToBill(userId, datapoints);
 
             if (result) return Ok("Data succesfully added"); else return BadRequest("Something went wrong, try again...");
         }

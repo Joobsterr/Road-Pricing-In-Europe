@@ -1,10 +1,12 @@
-﻿using BillingService.Models.DTO;
+﻿using BillingService.Models;
+using BillingService.Models.DTO;
 
 namespace BillingService.Services
 {
     public interface IBillService
     {
-        bool AddTripToBill(List<DataModel> datapoints, int userBsn);
+        bool AddTripToBill(int userId, List<DataModel> datapoints);
         double GeneratePriceForTrip(List<DataModel> datapoints);
+        List<Bill> GetUserBills(int userId);
     }
 }
