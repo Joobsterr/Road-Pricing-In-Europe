@@ -23,9 +23,9 @@ namespace CarService.Controllers
             return cars;
         }
         [HttpPost("addNewCar")]
-        public async Task<IActionResult> addNewCar(string Licenseplate, int userID)
+        public async Task<IActionResult> addNewCar(LicenseDTO licenseDTO)
         {
-            Car c = await _carRepository.addNewCar(Licenseplate, userID);
+            Car c = await _carRepository.addNewCar(licenseDTO.Licenseplate, licenseDTO.userID);
             if(c == default)
             {
                 return Ok(new ApiResponse<string>(false, "Deze auto kan niet worden toegevoegd"));

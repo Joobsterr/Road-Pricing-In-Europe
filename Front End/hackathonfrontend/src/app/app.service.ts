@@ -3,6 +3,7 @@ import { HttpClient} from '@angular/common/http';
 import {UserDTO} from '../models/UserDTO';
 import {Router} from '@angular/router';
 import {RegisterDTO} from '../models/RegisterDTO';
+import {LicenseDTO} from '../models/LicenseDTO';
 @Injectable({
   providedIn: 'root'
 })
@@ -23,5 +24,11 @@ export class AppService {
   }
   register(nRegister: RegisterDTO) {
     return this.http.post(this.rootUrl + '/User/register', nRegister)
+  }
+  addNewCar(Licenseplate: string, id: number) {
+    const licenseDTO = new LicenseDTO();
+    licenseDTO.userID = id;
+    licenseDTO.Licenseplate = Licenseplate;
+    return this.http.post(this.rootUrl + '/Car/addNewCar', licenseDTO)
   }
 }
