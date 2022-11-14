@@ -27,22 +27,27 @@ namespace AdministrativeService.Repository
  
         }
 
-        public async Task<ActionResult> PostPrice(AdministrationPrices administrationPrices)
+        public async Task<ActionResult?> PostPrice(AdministrationPrices administrationPrices)
         {
             try
             {
-                _databaseContext.Add(administrationPrices);
+                AdministrationPrices insert=new AdministrationPrices { Price = administrationPrices.Price,CarType=administrationPrices.CarType,RoadType=administrationPrices.RoadType,FuelType=administrationPrices.FuelType,Timeframe=administrationPrices.Timeframe };
+                _databaseContext.Add(insert);
                 await _databaseContext.SaveChangesAsync();
+                
                 return default;
             }
             catch (Exception ex)
             {
-                return default;
+                Console.WriteLine("---------------------Post Error Admin----------------------");
+                Console.WriteLine($"error message:{ex.Message}");
+                Console.WriteLine("-------------------------End Error-------------------------");
+                return null;
             }
          
         }
 
-        public async Task<ActionResult> UpdatePrice(int id,AdministrationPrices administrationPrices)
+        public async Task<ActionResult?> UpdatePrice(int id,AdministrationPrices administrationPrices)
         {
             try
             {

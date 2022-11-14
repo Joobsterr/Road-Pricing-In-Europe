@@ -29,7 +29,7 @@ namespace AdministrativeService.Controllers
         [HttpPost("CreateNewPrice")]
         public async Task<ActionResult> CreatePrice(AdministrationPrices administrationPrices)
         {
-            return await _administrativeService.CreateNewPrice(administrationPrices);
+            return  await _administrativeService.CreateNewPrice(administrationPrices);
         }
         [HttpGet]
         public async Task<ActionResult<List<AdministrationPrices>>>GetPrices()

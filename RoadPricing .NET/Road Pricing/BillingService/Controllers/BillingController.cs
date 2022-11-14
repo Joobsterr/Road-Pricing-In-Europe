@@ -12,7 +12,7 @@ namespace BillingService.Controllers
         {
             return new List<Bill>();
         }
-        public bool AddRouteToBill(Models.DTO.Route)
+        public bool AddRouteToBill(Models.DTO.Route route)
         {
             return true;
         }
