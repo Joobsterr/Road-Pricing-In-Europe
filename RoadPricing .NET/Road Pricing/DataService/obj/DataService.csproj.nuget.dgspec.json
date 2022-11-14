@@ -43,6 +43,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "CassandraCSharpDriver": {
+              "target": "Package",
+              "version": "[3.18.0, )"
+            },
+            "CassandraCSharpDriver.Graph": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.9, )"
