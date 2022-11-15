@@ -35,8 +35,9 @@ namespace DataService
                 var longitude = dataModel.lat_long.Item2.ToString().Replace(",", ".");
                 var timeStamp = dataModel.dateTimeStamp.ToString("yyyy-MM-ddTHH:mm:ss");
 
-                string query = "INSERT INTO sumo.datapoints (car_id, lat_long, time_stamp, route_id, lane_max_speed_ms)" +
-                    "VALUES(" + dataModel.carId + ",(" + latitude + "," + longitude + "),'" + timeStamp + "', " + dataModel.routeId + ", " + dataModel.laneMaxSpeedMs + ");";
+                string query = "INSERT INTO sumo.datapoints (car_id, lat_long, time_stamp, route_id, lane_max_speed_ms, vehicle_type_name, emission_type)" +
+                    "VALUES(" + dataModel.carId + ",(" + latitude + "," + longitude + "),'" + timeStamp + "', " + dataModel.routeId + 
+                    ", " + dataModel.laneMaxSpeedMs + ", '" + dataModel.vehicleTypeName + "', '" + dataModel.emissionType + "');";
 
                 WriteSession.Execute(query);
             }
@@ -53,14 +54,7 @@ namespace DataService
             List<DataModel> dataPoints = new List<DataModel>();
             foreach (var row in rowset)
             {
-                DataModel dataModel = new DataModel(
-                    row.GetValue<int>("car_id"),
-                    row.GetValue<Tuple<Double, Double>>("lat_long"),
-                    row.GetValue<DateTime>("time_stamp"),
-                    row.GetValue<int>("route_id"),
-                    row.GetValue<double>("lane_max_speed_ms")); ;
-
-                dataPoints.Add(dataModel);
+                dataPoints.Add(createDataModel(row));
             }
 
             return dataPoints;
@@ -77,14 +71,7 @@ namespace DataService
             List<DataModel> dataPoints = new List<DataModel>();
             foreach (var row in rowset)
             {
-                DataModel dataModel = new DataModel(
-                    row.GetValue<int>("car_id"),
-                    row.GetValue<Tuple<Double, Double>>("lat_long"),
-                    row.GetValue<DateTime>("time_stamp"),
-                    row.GetValue<int>("route_id"),
-                    row.GetValue<double>("lane_max_speed_ms")); ;
-
-                dataPoints.Add(dataModel);
+                dataPoints.Add(createDataModel(row));
             }
 
             return dataPoints;
@@ -104,14 +91,7 @@ namespace DataService
             List<DataModel> dataPoints = new List<DataModel>();
             foreach (var row in rowset)
             {
-                DataModel dataModel = new DataModel(
-                    row.GetValue<int>("car_id"),
-                    row.GetValue<Tuple<Double, Double>>("lat_long"),
-                    row.GetValue<DateTime>("time_stamp"),
-                    row.GetValue<int>("route_id"),
-                    row.GetValue<double>("lane_max_speed_ms")); ;
-
-                dataPoints.Add(dataModel);
+                dataPoints.Add(createDataModel(row));
             }
 
             return dataPoints;
@@ -124,7 +104,9 @@ namespace DataService
                     row.GetValue<Tuple<Double, Double>>("lat_long"),
                     row.GetValue<DateTime>("time_stamp"),
                     row.GetValue<int>("route_id"),
-                    row.GetValue<double>("lane_max_speed_ms")); ;
+                    row.GetValue<double>("lane_max_speed_ms"),
+                    row.GetValue<string>("vehicle_type_name"),
+                    row.GetValue<string>("emission_type")); ;
         }
     }
 }

@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using BillingService.Models;
-using BillingService.Models.DTO;
 using BillingService.Services;
 
 namespace BillingService.Controllers
@@ -36,7 +35,6 @@ namespace BillingService.Controllers
         public async Task<IActionResult> GeneratePriceForTrip(List<DataModel> datapoints)
         {
             double resultPrice = _billService.GeneratePriceForTrip(datapoints);
-
             return Ok(resultPrice);
         }
 

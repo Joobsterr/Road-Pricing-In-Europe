@@ -1,5 +1,4 @@
 ﻿using BillingService.Models;
-using BillingService.Models.DTO;
 
 namespace BillingService.Services
 {

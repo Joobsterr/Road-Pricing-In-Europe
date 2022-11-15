@@ -1,4 +1,4 @@
-﻿namespace DataService.DTO
+﻿namespace BillingService.Models
 {
     public class DataModel
     {

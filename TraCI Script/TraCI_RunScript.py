@@ -12,21 +12,23 @@ import json
 from datetime import datetime
 
 class dataModel: 
-    def __init__(self, carId, lat, lon, dateTimeNow, routeId, laneMaxSpeedMs): 
+    def __init__(self, carId, lat, lon, dateTimeNow, routeId, laneMaxSpeedMs, vehicleTypeName): 
         self.carId = carId
         self.lat = lat
         self.lon = lon
         self.dateTimeNow = dateTimeNow
         self.routeId = routeId
         self.laneMaxSpeedMs = laneMaxSpeedMs
-    
+        self.vehicleTypeName = vehicleTypeName
+
     def dump(self):
         return {'carId': int(self.carId),
                                'latitude': self.lat,
                                'longitude': self.lon,
                                'timeStamp': self.dateTimeNow,
                                'routeId': int(self.routeId),
-                               'laneMaxSpeedMs': int(self.laneMaxSpeedMs)}
+                               'laneMaxSpeedMs': int(self.laneMaxSpeedMs),
+                               'vehicleTypeName': self.vehicleTypeName}
         
 # Methods
 def sendData(messageBody):
@@ -68,7 +70,7 @@ traci.start(sumoCmd)
 step = 0
 while step < simulationDuration:
     traci.simulationStep()
-    if step%50 == 0:
+    if step%10 == 0:
         dateTimeNowString = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
         vehicleDataList = []
         for carId in traci.vehicle.getIDList():
@@ -78,8 +80,8 @@ while step < simulationDuration:
             lon, lat = traci.simulation.convertGeo(x, y)
             laneId = traci.vehicle.getLaneID(carId)
             laneMaxSpeedMs = traci.lane.getMaxSpeed(laneId)
-
-            vehicleDataList.append(dataModel(carId, lat, lon, dateTimeNowString, routeId, laneMaxSpeedMs))
+            vehicleTypeName = traci.vehicle.getTypeID(carId)
+            vehicleDataList.append(dataModel(carId, lat, lon, dateTimeNowString, routeId, laneMaxSpeedMs, vehicleTypeName))
         
         sendData(vehicleDataList)
     step += 1

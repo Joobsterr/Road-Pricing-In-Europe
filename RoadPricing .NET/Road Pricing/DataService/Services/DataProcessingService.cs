@@ -20,7 +20,7 @@ namespace DataService
 
             foreach (DataDTO dataDTO in dataInputDto)
             {
-                dataModels.Add(new DataModel(dataDTO.carId, new Tuple<double, double>(dataDTO.latitude, dataDTO.longitude), DateTime.Parse(dataDTO.timeStamp), dataDTO.routeId, dataDTO.laneMaxSpeedMs));
+                dataModels.Add(new DataModel(dataDTO.carId, new Tuple<double, double>(dataDTO.latitude, dataDTO.longitude), DateTime.Parse(dataDTO.timeStamp), dataDTO.routeId, dataDTO.laneMaxSpeedMs, dataDTO.vehicleTypeName, "Petrol"));
             }
 
             _repository.enterDataPoint(dataModels);

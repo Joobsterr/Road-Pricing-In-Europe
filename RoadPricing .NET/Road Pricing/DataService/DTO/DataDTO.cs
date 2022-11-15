@@ -8,8 +8,9 @@
         public string timeStamp { get; set; }
         public int routeId { get; set; }
         public double laneMaxSpeedMs { get; set; }
+        public string vehicleTypeName { get; set; }
 
-        public DataDTO(int carId, double latitude, double longitude, string timeStamp, int routeId, double laneMaxSpeedMs)
+        public DataDTO(int carId, double latitude, double longitude, string timeStamp, int routeId, double laneMaxSpeedMs, string vehicleTypeName)
         {
             this.carId = carId;
             this.latitude = latitude;
@@ -17,6 +18,7 @@
             this.timeStamp = timeStamp;
             this.routeId = routeId;
             this.laneMaxSpeedMs = laneMaxSpeedMs;
+            this.vehicleTypeName = vehicleTypeName;
         }
     }
 }

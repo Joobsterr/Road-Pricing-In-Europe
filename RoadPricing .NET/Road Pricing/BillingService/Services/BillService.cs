@@ -1,5 +1,4 @@
 ﻿using BillingService.Models;
-using BillingService.Models.DTO;
 using BillingService.Repository;
 
 namespace BillingService.Services
@@ -20,18 +19,16 @@ namespace BillingService.Services
 
         public bool AddTripToBill(int userId, List<DataModel> datapoints)
         {
-            //Calculate routeprice total etc...
             double tripPrice = CalculateRoutePrice(datapoints);
+            DataModel firstDataModelInList = datapoints[0];
+            TimeSpan timespan = datapoints.Last().dateTimeStamp - firstDataModelInList.dateTimeStamp;
 
-            return _billRepository.AddTripToBill(userId, new Trip(datapoints, 100.00, DateOnly.FromDateTime(DateTime.Now), 100.00));
+            return _billRepository.AddTripToBill(userId, firstDataModelInList.dateTimeStamp.Month, firstDataModelInList.dateTimeStamp.Year, new Trip(firstDataModelInList.routeId, firstDataModelInList.carId, firstDataModelInList.dateTimeStamp, timespan.TotalMinutes, tripPrice));
         }
 
         public double GeneratePriceForTrip(List<DataModel> datapoints)
         {
-            // Calculate routeprice total
-            var tripPrice = CalculateRoutePrice(datapoints);
-
-            return tripPrice;
+            return CalculateRoutePrice(datapoints);
         }
 
         private double CalculateRoutePrice(List<DataModel> datapoints)
@@ -39,9 +36,9 @@ namespace BillingService.Services
             double price = 0;
             foreach (DataModel datapoint in datapoints)
             {
-                price += getCarTypePrice(datapoint.carType);
-                price += getRoadTypePrice(datapoint.maxLaneSpeed);
-                price += getFuelTypePrice(datapoint.fuelType);
+                price += getCarTypePrice(datapoint.vehicleTypeName);
+                price += getRoadTypePrice(datapoint.laneMaxSpeedMs);
+                price += getFuelTypePrice(datapoint.emissionType);
                 price += getTimeFramePrice(datapoint.dateTimeStamp.Hour);
             }
 
@@ -54,10 +51,8 @@ namespace BillingService.Services
         {
             switch (carType)
             {
-                case "personenauto":
-                    return 10;
-                case "vrachtwagen":
-                    return 10;
+                case "DEFAULT_VEHTYPE":
+                    return 0.50;
                 default:
                     return 0;
             }
@@ -67,10 +62,36 @@ namespace BillingService.Services
         {
             switch (maxSpeedLane)
             {
-                case 30:
-                    return 10;
-                case 50:
-                    return 15;
+                case < 7:  //20kmh
+                    return 1.00;
+
+                case < 9:  //30kmh
+                    return 1.25;
+
+                case < 15: //50kmh
+                    return 1.75;
+
+                case < 18: //60kmh
+                    return 2.00;
+
+                case < 20: //70kmh
+                    return 2.25;
+
+                case < 23: //80kmh
+                    return 2.50;
+
+                case < 29: //100kmh
+                    return 3.00;
+
+                case < 34: //120kmh
+                    return 4.00;
+
+                case < 37: //130kmh
+                    return 5.00;
+
+                case > 36:
+                    return 5.00;
+
                 default:
                     return 0;
             }
@@ -99,30 +120,30 @@ namespace BillingService.Services
                 case 3:
                 case 4:
                 case 5:
-                    return 5;
+                    return 0.50;
                 case 6:
                 case 7:
                 case 8:
                 case 9:
-                    return 20;
+                    return 2.00;
                 case 10:
                 case 11:
                 case 12:
                 case 13:
                 case 14:
                 case 15:
-                    return 10;
+                    return 1.00;
                 case 16:
                 case 17:
                 case 18:
                 case 19:
-                    return 15;
+                    return 1.50;
                 case 20:
                 case 21:
                 case 22:
                 case 23:
                 case 24:
-                    return 10;
+                    return 1.00;
                 default:
                     return 0;
             }
