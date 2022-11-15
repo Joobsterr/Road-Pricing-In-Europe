@@ -16,8 +16,8 @@ export class AppService {
       private http: HttpClient,
       public router: Router
   ) { }
-  getUsers() {
-    return this.http.get( this.rootUrl + '/User/getUsers');
+  getUsersByID(id: string) {
+    return this.http.get( this.rootUrl + '/User/getUsersByID/' + id);
   }
   login(nUser: UserDTO) {
     return this.http.post(this.rootUrl + '/User/login', nUser)

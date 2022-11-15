@@ -14,13 +14,23 @@ namespace UserService.Models
         public string Username { get; set; }
         [Required]
         public string Password { get; set; }
+        [Required]
+        public string Email { get; set; }
+        [Required]
+        public string Address { get; set; }
+        [Required]
+        public string City { get; set; }
 
-        public User(int bSN, string username, string password)
+        public User(int bSN, string username, string password, string email, string address, string city)
         {
             BSN = bSN;
             Username = username;
             Password = password;
+            Email = email;
+            Address = address;
+            City = city;
         }
+
         public User()
         {
         }

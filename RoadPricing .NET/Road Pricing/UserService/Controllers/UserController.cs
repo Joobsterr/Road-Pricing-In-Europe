@@ -18,11 +18,11 @@ namespace UserService.Controllers
         {
             _userRepository = userRepository;
         }
-        [HttpGet("getUsers")]
-        public async Task<List<User>> GetUsers()
+        [HttpGet("getUsersByID/{id}")]
+        public async Task<User> GetUsersByID(int id)
         {
-            List<User> users = await _userRepository.GetUsers();
-            return users;
+            User user = await _userRepository.GetUsersByID(id);
+            return user;
         }
 
         [HttpPost("login")]
@@ -36,7 +36,7 @@ namespace UserService.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register(RegisterDTO registerDTO)
         {
-            await _userRepository.Register(new Models.User(registerDTO.BSN, registerDTO.userName, registerDTO.passWord));
+            await _userRepository.Register(new Models.User(registerDTO.BSN, registerDTO.userName, registerDTO.passWord, registerDTO.Email, registerDTO.Address, registerDTO.City));
             return Ok();
         }
     }

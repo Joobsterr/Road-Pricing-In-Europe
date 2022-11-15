@@ -22,6 +22,9 @@ export class LoginComponent implements OnInit {
   rPassword: string;
   BSN: number;
   nPassword: string;
+  city: string;
+  address: string;
+  email: string;
 
   constructor(
       public router: Router,
@@ -56,6 +59,9 @@ export class LoginComponent implements OnInit {
     const nRegister = new RegisterDTO();
     nRegister.BSN = this.BSN;
     nRegister.userName = this.rUsername;
+    nRegister.Address = this.address;
+    nRegister.Email = this.email;
+    nRegister.City = this.city;
     if (this.rUsername == null || this.rUsername.length === 0 || this.rPassword == null || this.rPassword.length === 0) {
       this._snackBar.open('Incorrect details entered', null, {duration: 5000,})
     } else {
@@ -65,7 +71,7 @@ export class LoginComponent implements OnInit {
           window.location.reload();
         },
         error: (error) => {
-          this._snackBar.open('One of the entered details is incorrect', null, {duration: 5000,})
+          this._snackBar.open('One of the entered details is incorrect', null, {duration: 5000})
         }
       });
     }

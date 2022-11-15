@@ -27,10 +27,10 @@ namespace UserService
             return default;
         }
 
-        public async Task<List<User>> GetUsers()
+        public async Task<User> GetUsersByID(int id)
         {
-            List<User> users = await _dbContext.Users.ToListAsync();
-            return users;
+            User user = await _dbContext.Users.Where(x => x.Id == id).FirstOrDefaultAsync();
+            return user;
         }
 
         public async Task<User> Login(string userName, string passWord)

@@ -49,6 +49,18 @@
                             <label asp-for="Username"></label>
                             <input class="form-control" placeholder="BSN" [(ngModel)]="BSN" asp-for="Username" type="number" autofocus>
                         </div>
+                        <div class="form-group">
+                            <label asp-for="Username"></label>
+                            <input type="password" class="form-control"[(ngModel)]="email" placeholder="E-mail" asp-for="Username" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Username"></label>
+                            <input type="password" class="form-control"[(ngModel)]="address" placeholder="Home Address" asp-for="Username" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Username"></label>
+                            <input type="password" class="form-control"[(ngModel)]="city" placeholder="City" asp-for="Username" autocomplete="off">
+                        </div>
                         <button class="btn btn-primary" name="button" value="register" (click)="Register()">Register</button>
                     </form>
                 </div>
