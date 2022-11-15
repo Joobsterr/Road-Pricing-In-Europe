@@ -2283,23 +2283,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\nardo\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\odranJ\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GIT-projects\\S6\\Road-Pricing-In-Europe\\RoadPricing .NET\\Road Pricing\\UserService\\UserService.csproj",
+      "projectUniqueName": "F:\\1download\\School\\GIT\\S6-RoadPricing\\Road-Pricing-In-Europe\\RoadPricing .NET\\Road Pricing\\UserService\\UserService.csproj",
       "projectName": "UserService",
-      "projectPath": "D:\\GIT-projects\\S6\\Road-Pricing-In-Europe\\RoadPricing .NET\\Road Pricing\\UserService\\UserService.csproj",
-      "packagesPath": "C:\\Users\\nardo\\.nuget\\packages\\",
-      "outputPath": "D:\\GIT-projects\\S6\\Road-Pricing-In-Europe\\RoadPricing .NET\\Road Pricing\\UserService\\obj\\",
+      "projectPath": "F:\\1download\\School\\GIT\\S6-RoadPricing\\Road-Pricing-In-Europe\\RoadPricing .NET\\Road Pricing\\UserService\\UserService.csproj",
+      "packagesPath": "C:\\Users\\odranJ\\.nuget\\packages\\",
+      "outputPath": "F:\\1download\\School\\GIT\\S6-RoadPricing\\Road-Pricing-In-Europe\\RoadPricing .NET\\Road Pricing\\UserService\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\nardo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\odranJ\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
