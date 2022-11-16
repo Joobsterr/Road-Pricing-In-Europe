@@ -5,10 +5,9 @@ namespace BillingService.Repository
 {
     public class BillRepository : IBillRepository
     {
-        // Docker command:
+        // Docker command to run the database:
         // docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Password1!" --name billmssql -p 1633:1433 -d mcr.microsoft.com/mssql/server:2022-latest
 
-        // Connect to DB here as well
         private readonly BillDbContext _billDbContext;
         public BillRepository(BillDbContext billDbContext)
         {
@@ -31,7 +30,6 @@ namespace BillingService.Repository
             _billDbContext.Trips.Add(trip);
 
             _billDbContext.SaveChanges();
-            // Add object to database in refference to the correct bill
             return true;
         }
 

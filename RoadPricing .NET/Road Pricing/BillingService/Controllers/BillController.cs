@@ -19,6 +19,7 @@ namespace BillingService.Controllers
         public async Task<IActionResult> GetUserBills(int userId)
         {
             List<Bill> userBills = _billService.GetUserBills(userId);
+
             return Ok(userBills);
         }
 
@@ -35,6 +36,7 @@ namespace BillingService.Controllers
         public async Task<IActionResult> GeneratePriceForTrip(List<DataModel> datapoints)
         {
             double resultPrice = _billService.GeneratePriceForTrip(datapoints);
+
             return Ok(resultPrice);
         }
 
