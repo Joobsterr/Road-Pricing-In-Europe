@@ -7,11 +7,11 @@ namespace RouteService.Controllers
     [Route("[controller]")]
     public class RouteController : ControllerBase
     {
-        public Models.RouteModel GetSpecificRoute(int id)
+        public Models.Route GetSpecificRoute(int id)
         {
-            return new RouteModel();
+            return new Models.Route();
         }
-        public bool AddRoute(RouteModel routeModel)
+        public bool AddRoute(Models.Route)
         {
             return true;
         }
