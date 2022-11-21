@@ -16,13 +16,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BillingService", "BillingService\BillingService.csproj", "{CA6829D6-B36D-4981-9ACD-CCB7BC5660E0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RouteService", "RouteService\RouteService.csproj", "{91926678-E62B-4DD1-90FA-3AEAD76D5464}"
-<<<<<<< HEAD
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ocelot", "Ocelot", "{B029D498-8D00-4385-9BB9-20DBCDC971AF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcelotApiGw", "OcelotApiGw\OcelotApiGw.csproj", "{1A2E7D36-EB1D-450E-B37F-271C98819E6C}"
-=======
->>>>>>> ginobranch
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

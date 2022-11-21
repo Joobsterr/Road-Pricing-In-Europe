@@ -2,8 +2,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RoadPricingComponent } from './road-pricing.component';
 
-
-
 describe('RoadPricingComponent', () => {
   let component: RoadPricingComponent;
   let fixture: ComponentFixture<RoadPricingComponent>;

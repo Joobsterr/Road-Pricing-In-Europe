@@ -1,7 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
     "F:\\1download\\School\\GIT\\S6-RoadPricing\\Road-Pricing-In-Europe\\RoadPricing .NET\\Road Pricing\\UserService\\UserService.csproj": {}
   },
   "projects": {
@@ -16,25 +15,6 @@
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\odranJ\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-    "D:\\fontys\\semester 6 B\\hackatron\\Road-Pricing-In-Europe\\RoadPricing .NET\\Road Pricing\\UserService\\UserService.csproj": {}
-  },
-  "projects": {
-    "D:\\fontys\\semester 6 B\\hackatron\\Road-Pricing-In-Europe\\RoadPricing .NET\\Road Pricing\\UserService\\UserService.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "D:\\fontys\\semester 6 B\\hackatron\\Road-Pricing-In-Europe\\RoadPricing .NET\\Road Pricing\\UserService\\UserService.csproj",
-        "projectName": "UserService",
-        "projectPath": "D:\\fontys\\semester 6 B\\hackatron\\Road-Pricing-In-Europe\\RoadPricing .NET\\Road Pricing\\UserService\\UserService.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\fontys\\semester 6 B\\hackatron\\Road-Pricing-In-Europe\\RoadPricing .NET\\Road Pricing\\UserService\\obj\\",
-        "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
-        "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> ginobranch
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -122,14 +102,10 @@
             }
           },
 <<<<<<< HEAD
-<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.306\\RuntimeIdentifierGraph.json"
 =======
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
 >>>>>>> nardobranch
-=======
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
->>>>>>> ginobranch
         }
       }
     }
