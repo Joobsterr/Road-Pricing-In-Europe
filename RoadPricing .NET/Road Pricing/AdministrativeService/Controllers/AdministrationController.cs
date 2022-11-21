@@ -10,9 +10,9 @@ namespace AdministrativeService.Controllers
     {
         private readonly IAdministrationService _administrativeService;
 
-        public AdministrationController(IAdministrationService administartionService)
+        public AdministrationController(IAdministrationService administrationService)
         {
-            _administrativeService = administartionService;
+            _administrativeService = administrationService;
         }
         [HttpGet("FilterPrices")]
         public List<AdministrationPrices> FilterAdministrationPrices(string fuelType, string carType, string roadType, DateOnly timeFrame)
