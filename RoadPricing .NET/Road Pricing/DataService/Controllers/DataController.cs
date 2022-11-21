@@ -7,6 +7,7 @@ namespace DataService.Controllers
     [Route("[controller]")]
     public class DataController : ControllerBase
     {
+<<<<<<< HEAD
         private readonly IDataProcessingService _dataService;
 
         public DataController(IDataProcessingService dataService)
@@ -34,5 +35,24 @@ namespace DataService.Controllers
             List<DataModel> datapoints = _dataService.getDataPointsPerCarWithTimeframe(carId, startDate, endDate);
             return Ok(datapoints);
         }
+=======
+        public DataOutputModel TransformInputData(DataInputModel data)
+        {
+            // WIP
+            return null;
+        }
+
+        public List<DataOutputModel> GetTransformedDataTimeFrame(string TimeFrame)
+        {
+            // WIP
+            return null;
+        }
+
+        public List<DataOutputModel> GetTransformedDataCar(int CarId)
+        {
+            // WIP
+            return null;
+        }
+>>>>>>> ginobranch
     }
 }

@@ -1,6 +1,14 @@
+<<<<<<< HEAD
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Text;
+=======
+using AdministrativeService;
+using AdministrativeService.DataBase;
+using AdministrativeService.Repository;
+using AdministrativeService.Service;
+using Microsoft.EntityFrameworkCore;
+>>>>>>> ginobranch
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +18,14 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddDbContext<DatabaseContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+
+builder.Services.AddScoped<IAdministrationService, AdministrationService>();
+builder.Services.AddScoped<IAdministrationRepository, AdministrationRepository>();
+builder.Services.AddCors();
 
 var app = builder.Build();
 
@@ -53,9 +69,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors(c => c.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 
 app.UseAuthorization();
 
 app.MapControllers();
-
+PrepDB.PrepPopulation(app);
 app.Run();
