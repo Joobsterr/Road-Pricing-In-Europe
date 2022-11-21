@@ -18,7 +18,7 @@
                                                 €
                                                 <div class="col-sm-2">
                                                     <input type="number" class="form-control" id="inputHighway"
-                                                        value="15">
+                                                        value={{adminPrice[0].price}}>
                                                 </div>
                                                 /km
                                             </div>
@@ -28,7 +28,7 @@
                                                 €
                                                 <div class="col-sm-2">
                                                     <input type="number" class="form-control" id="inputMotorway"
-                                                        value="8">
+                                                        value={{adminPrice[1].price}}>
                                                 </div>
                                                 /km
                                             </div>
@@ -38,7 +38,7 @@
                                                 €
                                                 <div class="col-sm-2">
                                                     <input type="number" class="form-control" id="inputNonCityLimits"
-                                                        value="5">
+                                                        value={{adminPrice[2].price}}>
                                                 </div>
                                                 /km
                                             </div>
@@ -48,7 +48,7 @@
                                                 €
                                                 <div class="col-sm-2">
                                                     <input type="number" class="form-control" id="inputCityLimits"
-                                                        value="2">
+                                                        value={{adminPrice[3].price}}>
                                                 </div>
                                                 /km
                                             </div>
@@ -107,7 +107,7 @@
                                     </div>
                                 </div>
                             </form>
-                            <button name="">Update Prices</button>
+                            <button name="" (click)="ChangeHighWayPrice(adminPrice[0].price)">Update Prices</button>
                         </div>
                     </div>
               
