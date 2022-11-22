@@ -15,7 +15,7 @@ namespace BillingService.Controllers
             _billService = billService;
         }
 
-        [HttpGet("getUserBills")]
+        [HttpGet("getUserBills/{userId}")]
         public async Task<IActionResult> GetUserBills(int userId)
         {
             List<Bill> userBills = _billService.GetUserBills(userId);

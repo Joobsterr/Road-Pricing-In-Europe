@@ -1,5 +1,6 @@
 ﻿using BillingService.Models;
 using BillingService.Repository;
+using System.Globalization;
 
 namespace BillingService.Services
 {
@@ -14,7 +15,9 @@ namespace BillingService.Services
 
         public List<Bill> GetUserBills(int userId)
         {
-            return _billRepository.GetUserBills(userId);
+            List<Bill> bills = _billRepository.GetUserBills(userId);
+
+            return bills.OrderByDescending(x => x.month).ToList();
         }
 
         public bool AddTripToBill(int userId, List<DataModel> datapoints)
