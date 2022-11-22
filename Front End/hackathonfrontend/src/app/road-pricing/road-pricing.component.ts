@@ -3,10 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { AdministrationPricesDTO } from 'models/AdministrationPricesDTO';
 import { map } from 'rxjs';
 
-const highwayPrice=0;
-const motorwayPrice=0;
-const outsideCityLimits=0;
-const withinCityLimints=0;
 
 @Component({
   selector: 'app-road-pricing',
@@ -17,10 +13,13 @@ const withinCityLimints=0;
 
 export class RoadPricingComponent implements OnInit {
   adminPrice:AdministrationPricesDTO[]=[];
-
-  constructor(private http:HttpClient) { }
   value=0;
   highwayPrice=0;
+  MotorwayPrice=0;
+  outsideCityLimits=0;
+  withinCityLimints=0;
+  constructor(private http:HttpClient) { }
+
   ngOnInit(): void {
     this.http.get<{[key:string]:AdministrationPricesDTO}>("https://localhost:7119/Administration").pipe(map((data)=>{
 
@@ -37,23 +36,25 @@ export class RoadPricingComponent implements OnInit {
     })).subscribe((priceData)=>{
       console.log(priceData);
       this.adminPrice=priceData;
-      console.log(this.adminPrice[0].carType);
       this.highwayPrice=this.adminPrice[0].price;
+      this.MotorwayPrice=this.adminPrice[1].price;
+      this.outsideCityLimits=this.adminPrice[2].price;
+      this.withinCityLimints=this.adminPrice[3].price;
+      console.log("Highway: "+this.highwayPrice+" MotorWay: "+this.MotorwayPrice+" OutsideCityLimits: "+this.outsideCityLimits+" InCityLimits: "+this.withinCityLimints);
     })
   }
   
 
-  ChangeHighWayPrice(value:any):void
+  ChangeHighWayPrice():void
   {
-      console.log(value);
+      console.log(this.highwayPrice);
+      
       const newPrice={id: 0,
       fuelType: "string",
       carType: "string",
       roadType: "string",
       timeframe: "2022-11-21T12:51:54.044Z",
-      price: value};
-      newPrice.price=value;
-      
+      price: this.highwayPrice};      
       this.http.put("https://localhost:7119/Administration/UpdatePrices/5",newPrice).subscribe((data)=>
       {
         console.log(data);
@@ -61,16 +62,49 @@ export class RoadPricingComponent implements OnInit {
   }
   ChangeMotorWayPrice():void
   {
-
+    console.log(this.highwayPrice);
+      
+    const newPrice={id: 0,
+    fuelType: "string",
+    carType: "string",
+    roadType: "string",
+    timeframe: "2022-11-21T12:51:54.044Z",
+    price: this.MotorwayPrice};      
+    this.http.put("https://localhost:7119/Administration/UpdatePrices/6",newPrice).subscribe((data)=>
+    {
+      console.log(data);
+    })
   }
 
   ChangeOutsideCityLimitsPrice():void
   {
-
+    console.log(this.highwayPrice);
+      
+    const newPrice={id: 0,
+    fuelType: "string",
+    carType: "string",
+    roadType: "string",
+    timeframe: "2022-11-21T12:51:54.044Z",
+    price: this.outsideCityLimits};      
+    this.http.put("https://localhost:7119/Administration/UpdatePrices/7",newPrice).subscribe((data)=>
+    {
+      console.log(data);
+    })
   }
   ChangeWithinCityLimints():void
   {
-
+    console.log(this.highwayPrice);
+      
+    const newPrice={id: 0,
+    fuelType: "string",
+    carType: "string",
+    roadType: "string",
+    timeframe: "2022-11-21T12:51:54.044Z",
+    price: this.withinCityLimints};      
+    this.http.put("https://localhost:7119/Administration/UpdatePrices/8",newPrice).subscribe((data)=>
+    {
+      console.log(data);
+    })
   }
 
 }
