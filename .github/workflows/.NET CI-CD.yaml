@@ -18,9 +18,7 @@ jobs:
           dotnet-version: '6.0.306'
 
       - name: Restore Dependencies 🛠️
-        working-directory: Road Pricing .NET/Road Pricing
         run: dotnet restore
       
       - name: Build App 🚀
-        working-directory: Road Pricing .NET/Road Pricing
         run: dotnet build -c Release --no-restore
