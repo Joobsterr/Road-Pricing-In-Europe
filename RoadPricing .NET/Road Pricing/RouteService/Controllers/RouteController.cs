@@ -11,9 +11,5 @@ namespace RouteService.Controllers
         {
             return new Models.Route();
         }
-        public bool AddRoute(Models.Route)
-        {
-            return true;
-        }
     }
 }
