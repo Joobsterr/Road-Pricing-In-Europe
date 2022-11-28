@@ -6,619 +6,77 @@
                     <div class="card-body">
                         <div id="accordion">
                             <div class="card">
-                                <!-- Billing PFD modal -->
+
+                                <!-- Billing modal -->
                                 <div class="modal fade" id="billingModal" tabindex="-1" role="dialog"
-                                     aria-labelledby="billingModalLabel" aria-hidden="true">
+                                    aria-labelledby="billingModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="billingModalLabel">Billing overview</h5>
+                                                <h1 class="modal-title" id="billingModalLabel">
+                                                    {{selectedModalBill.year}} - {{selectedModalBill.month}}</h1>
                                                 <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
+                                                    aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                ...
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">Trip number</th>
+                                                            <th scope="col">Trip start time</th>
+                                                            <th scope="col">Trip duration</th>
+                                                            <th scope="col">Trip price</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let trip of selectedModalBill.trips">
+                                                            <th scope="row">{{trip.id}}</th>
+                                                            <td>{{trip.routeStartTime | date:'dd/MM/yy hh:mm'}}</td>
+                                                            <td>{{trip.timeDrivenInMinutes | number:'1.2-2' }} minutes</td>
+                                                            <td>€{{trip.totalPrice}}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-danger"
-                                                        data-dismiss="modal">Close</button>
+                                                    data-dismiss="modal">Close</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
                                 <!-- Billing overview per year -->
-                                <div class="card-header card-header-danger" data-toggle="collapse"
-                                     data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    <h4 class="card-title ">2022</h4>
-                                </div>
-
-                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                                     data-parent="#accordion">
-                                    <div class="card-body">
-                                        <div class="table-responsive">
-                                            <table class="table">
-                                                <tbody>
-                                                <tr>
-                                                    <td>
-                                                        January
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        February
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        March
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        April
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        May
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        June
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        July
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        August
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        September
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        October
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        November
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        December
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                <div class="card-header" id="headingOne">
+                                    <div class="card-header card-header-danger">
+                                        <h4 class="card-title ">2022</h4>
                                     </div>
-                                </div>
-
-                                <div class="card-header card-header-danger" data-toggle="collapse"
-                                     data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                                    <h4 class="card-title ">2021</h4>
-                                </div>
-                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-                                     data-parent="#accordion">
-                                    <div class="card-body">
-                                        <div class="table-responsive">
-                                            <table class="table">
-                                                <tbody>
-                                                <tr>
-                                                    <td>
-                                                        January
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        February
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        March
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        April
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        May
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        June
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        July
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        August
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        September
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        October
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        November
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        December
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card-header card-header-danger" data-toggle="collapse"
-                                     data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                                    <h4 class="card-title ">2020</h4>
-                                </div>
-                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-                                     data-parent="#accordion">
-                                    <div class="card-body">
-                                        <div class="table-responsive">
-                                            <table class="table">
-                                                <tbody>
-                                                <tr>
-                                                    <td>
-                                                        January
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        February
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        March
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        April
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        May
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        June
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        July
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        August
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        September
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        October
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        November
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        December
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card-header card-header-danger" data-toggle="collapse"
-                                     data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
-                                    <h4 class="card-title ">2019</h4>
-                                </div>
-                                <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
-                                     data-parent="#accordion">
-                                    <div class="card-body">
-                                        <div class="table-responsive">
-                                            <table class="table">
-                                                <tbody>
-                                                <tr>
-                                                    <td>
-                                                        January
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        February
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        March
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        April
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        May
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        June
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        July
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        August
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        September
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        October
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        November
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        December
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm"
-                                                                data-toggle="modal" data-target="#billingModal">
-                                                            See report
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
+                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                        data-parent="#accordion">
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <table class="table">
+                                                    <tbody>
+                                                        <tr *ngFor="let bill of allBills; let x = index">
+                                                            <td style="width:85%" *ngIf="bill.year == 2022">
+                                                                {{bill.month}}
+                                                            </td>
+                                                            <td style="width:5%" *ngIf="bill.year == 2022">
+                                                                €{{bill.totalPrice}}
+                                                            </td>
+                                                            <td style="width:10%" *ngIf="bill.year == 2022">
+                                                                <button type="button" class="btn btn-light btn-sm"
+                                                                    data-toggle="modal" data-target="#billingModal"
+                                                                    (click)="onModalClick(bill)">
+                                                                    See report
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

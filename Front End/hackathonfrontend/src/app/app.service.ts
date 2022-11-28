@@ -34,4 +34,7 @@ export class AppService {
   getCarsByUser(userID: string) {
     return this.http.get(this.rootUrl + '/Car/getCarsByUser/' + userID)
   }
+  getBillsByUser(userId: string) {
+    return this.http.get(this.rootUrl + '/Bill/getUserBills/' + userId)
+  }
 }
