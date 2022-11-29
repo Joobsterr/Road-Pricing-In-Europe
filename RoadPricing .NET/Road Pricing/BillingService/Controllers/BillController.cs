@@ -40,5 +40,13 @@ namespace BillingService.Controllers
             return Ok(resultPrice);
         }
 
+        [HttpGet("getUserBills/{userId}/{month}/{year}")]
+        public async Task<IActionResult> GetUserSpecificBills(int userId, int month, int year)
+        {
+            Bill specificBill = _billService.GetUserSpecificBill(userId, month, year);
+
+            return Ok(specificBill);
+        }
+
     }
 }

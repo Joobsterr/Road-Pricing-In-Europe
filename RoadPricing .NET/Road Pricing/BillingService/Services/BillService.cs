@@ -28,6 +28,11 @@ namespace BillingService.Services
 
             return _billRepository.AddTripToBill(userId, firstDataModelInList.dateTimeStamp.Month, firstDataModelInList.dateTimeStamp.Year, new Trip(firstDataModelInList.routeId, firstDataModelInList.carId, firstDataModelInList.dateTimeStamp, timespan.TotalMinutes, tripPrice));
         }
+        public Bill GetUserSpecificBill(int userId, int month, int year)
+        {
+            Bill specificBill = _billRepository.GetUserSpecificBills(userId, month, year);
+            return specificBill;
+        }
 
         public double GeneratePriceForTrip(List<DataModel> datapoints)
         {

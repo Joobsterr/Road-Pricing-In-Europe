@@ -6,5 +6,6 @@ namespace BillingService.Repository
     {
         bool AddTripToBill(int userId, int month, int year, Trip trip);
         List<Bill> GetUserBills(int userId);
+        Bill GetUserSpecificBills(int userId, int month, int year);
     }
 }

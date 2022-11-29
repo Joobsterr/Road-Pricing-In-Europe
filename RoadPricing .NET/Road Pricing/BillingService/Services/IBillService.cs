@@ -7,5 +7,6 @@ namespace BillingService.Services
         bool AddTripToBill(int userId, List<DataModel> datapoints);
         double GeneratePriceForTrip(List<DataModel> datapoints);
         List<Bill> GetUserBills(int userId);
+        Bill GetUserSpecificBill(int userId, int month, int year);
     }
 }
