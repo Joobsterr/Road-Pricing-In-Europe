@@ -42,5 +42,10 @@ namespace BillingService.Repository
             }
             return bills;
         }
+        public Bill GetUserSpecificBills(int userId, int month, int year)
+        {
+            Bill specificBill = _billDbContext.Bills.Where(bill => bill.userId == userId && bill.month == month && bill.year == year).FirstOrDefault();
+            return specificBill;
+        }
     }
 }
