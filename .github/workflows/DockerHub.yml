@@ -1,0 +1,89 @@
+name: Docker Image CI
+
+on:
+  workflow_run:
+    workflows: ["Continuous Integration and Deployment"]
+    types:
+      - completed
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    - name: docker login
+      env:
+        DOCKER_USER: ${{secrets.DOCKER_USERNAME}}
+        DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+      run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+      
+    - name: Build the Docker Image  (UserService) 🔧
+      working-directory: ./RoadPricing .NET/Road Pricing/UserService
+      run: docker build . -f UserService/Dockerfile --tag RoadPriceing/userservice:latest
+      
+    - name: Push the Docker Image (UserService) 🚀
+      working-directory: ./RoadPricing .NET/Road Pricing/UserService
+      run: docker push RoadPriceing/userservice:latest
+    
+    
+    
+    - name: Build the Docker Image (AdministrativeService) 🔧
+      working-directory: ./RoadPricing .NET/Road Pricing/AdministrativeService
+      run: docker build . -f AdministrativeService/Dockerfile --tag RoadPriceing/AdministrativeService:latest
+      
+    - name: Push the Docker Image (AdministrativeService) 🚀
+      working-directory: ./RoadPricing .NET/Road Pricing/AdministrativeService
+      run: docker push RoadPriceing/AdministrativeService:latest
+      
+      
+          
+    - name: Build the Docker Image (BillingService) 🔧
+      working-directory: ./RoadPricing .NET/Road Pricing/BillingService
+      run: docker build . -f BillingService/Dockerfile --tag RoadPriceing/BillingService:latest
+      
+    - name: Push the Docker Image (BillingService) 🚀
+      working-directory: ./RoadPricing .NET/Road Pricing/BillingService
+      run: docker push RoadPriceing/BillingService:latest
+      
+      
+            
+          
+    - name: Build the Docker Image (CarService) 🔧
+      working-directory: ./RoadPricing .NET/Road Pricing/CarService
+      run: docker build . -f CarService/Dockerfile --tag RoadPriceing/CarService:latest
+      
+    - name: Push the Docker Image (CarService) 🚀
+      working-directory: ./RoadPricing .NET/Road Pricing/CarService
+      run: docker push RoadPriceing/CarService:latest
+      
+      
+      
+    - name: Build the Docker Image (DataService) 🔧
+      working-directory: ./RoadPricing .NET/Road Pricing/DataService
+      run: docker build . -f DataService/Dockerfile --tag RoadPriceing/DataService:latest
+      
+    - name: Push the Docker Image (DataService) 🚀
+      working-directory: ./RoadPricing .NET/Road Pricing/DataService
+      run: docker push RoadPriceing/DataService:latest
+      
+      
+      
+    - name: Build the Docker Image (OcelotApiGw) 🔧
+      working-directory: ./RoadPricing .NET/Road Pricing/OcelotApiGw
+      run: docker build . -f OcelotApiGw/Dockerfile --tag RoadPriceing/OcelotApiGw:latest
+      
+    - name: Push the Docker Image (OcelotApiGw) 🚀
+      working-directory: ./RoadPricing .NET/Road Pricing/OcelotApiGw
+      run: docker push RoadPriceing/OcelotApiGw:latest
+      
+      
+            
+    - name: Build the Docker Image (RouteService) 🔧
+      working-directory: ./RoadPricing .NET/Road Pricing/RouteService
+      run: docker build . -f RouteService/Dockerfile --tag RoadPriceing/RouteService:latest
+      
+    - name: Push the Docker Image (RouteService) 🚀
+      working-directory: ./RoadPricing .NET/Road Pricing/RouteService
+      run: docker push RoadPriceing/RouteService:latest
+      
