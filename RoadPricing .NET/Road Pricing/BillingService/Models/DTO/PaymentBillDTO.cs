@@ -19,5 +19,4 @@
             this.paymentLink = paymentLink;
         }
     }
-    }
 }

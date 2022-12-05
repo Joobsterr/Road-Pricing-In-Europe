@@ -15,7 +15,7 @@ namespace BillingService.Repository
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var connectionString = "Server=127.0.0.1,1633;Database=BillDb;User Id=sa; Password=Password1!;";
+            var connectionString = "Server=localhost;Database=UserDB;User Id=sa; Password=Password1!;";
             optionsBuilder.UseSqlServer(connectionString);
             optionsBuilder.LogTo(Console.WriteLine, LogLevel.Information);
             optionsBuilder.EnableSensitiveDataLogging();

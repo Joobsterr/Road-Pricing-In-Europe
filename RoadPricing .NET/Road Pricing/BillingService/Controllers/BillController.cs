@@ -47,6 +47,11 @@ namespace BillingService.Controllers
 
             return Ok(specificBill);
         }
-
+        [HttpGet("getPaymentLink/{userId}/{billId}")]
+        public async Task<IActionResult> getPaymentLink(int userId, int billId)
+        {
+            string paymentLink = await _billService.getPaymentLink(userId, billId);
+            return Ok(paymentLink);
+        }
     }
 }

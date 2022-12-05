@@ -1,5 +1,6 @@
 ﻿using BillingService.Models;
 using BillingService.Repository;
+using BillingService.Workers;
 using System.Globalization;
 
 namespace BillingService.Services
@@ -7,10 +8,11 @@ namespace BillingService.Services
     public class BillService : IBillService
     {
         private readonly IBillRepository _billRepository;
-
+        private readonly MollieWorker _mollieWorker;
         public BillService(IBillRepository billRepository)
         {
             _billRepository = billRepository;
+            _mollieWorker = new MollieWorker();
         }
 
         public List<Bill> GetUserBills(int userId)
@@ -51,6 +53,17 @@ namespace BillingService.Services
             }
 
             return price;
+        }
+        public async Task<string> getPaymentLink(int userId, int billId)
+        {
+            Bill userBill = _billRepository.GetPaymentBillById(userId, billId);
+            double price = 0;
+            foreach(Trip trip in userBill.trips)
+            {
+                price += trip.totalPrice;
+            }
+            string paymentLink = await _mollieWorker.generatePaymentLink(price, userBill.month, userBill.year);
+            return paymentLink;
         }
 
 
