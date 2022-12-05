@@ -19,6 +19,13 @@ namespace AdministrativeService.Controllers
         {
             return new List<AdministrationPrices>();
         }
+
+        [HttpPost("message")]
+        public void message()
+        {
+            Console.WriteLine("Oke");
+        }
+
         [HttpPost("CreateNewPrice")]
         public async Task<ActionResult> CreatePrice(AdministrationPrices administrationPrices)
         {
@@ -29,14 +36,10 @@ namespace AdministrativeService.Controllers
         {
             return await _administrativeService.GetAllPrices();
         }
-        [HttpPut("UpdatePrices/{id}")]
+        [HttpPut]
         public async Task<ActionResult> UpdatePrice(int id, [FromBody]AdministrationPrices administrationPrices)
         {
-<<<<<<< HEAD
             return null;
-=======
-            return await _administrativeService.UpdatePrice(id, administrationPrices);
->>>>>>> ginobranch
         }
     }
 }

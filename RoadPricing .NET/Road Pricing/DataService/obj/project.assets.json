@@ -4611,23 +4611,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Job\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\fontys\\semester 6 B\\hackatron\\Road-Pricing-In-Europe\\RoadPricing .NET\\Road Pricing\\DataService\\DataService.csproj",
+      "projectUniqueName": "C:\\Users\\Job\\Documents\\Semester 6\\Semester 6v2\\Road Pricing\\Road-Pricing-In-Europe\\RoadPricing .NET\\Road Pricing\\DataService\\DataService.csproj",
       "projectName": "DataService",
-      "projectPath": "D:\\fontys\\semester 6 B\\hackatron\\Road-Pricing-In-Europe\\RoadPricing .NET\\Road Pricing\\DataService\\DataService.csproj",
-      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "D:\\fontys\\semester 6 B\\hackatron\\Road-Pricing-In-Europe\\RoadPricing .NET\\Road Pricing\\DataService\\obj\\",
+      "projectPath": "C:\\Users\\Job\\Documents\\Semester 6\\Semester 6v2\\Road Pricing\\Road-Pricing-In-Europe\\RoadPricing .NET\\Road Pricing\\DataService\\DataService.csproj",
+      "packagesPath": "C:\\Users\\Job\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Job\\Documents\\Semester 6\\Semester 6v2\\Road Pricing\\Road-Pricing-In-Europe\\RoadPricing .NET\\Road Pricing\\DataService\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Job\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4716,7 +4717,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.306\\RuntimeIdentifierGraph.json"
       }
     }
   }
