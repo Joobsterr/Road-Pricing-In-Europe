@@ -52,15 +52,17 @@ namespace AdministrativeService.Repository
             try
             {
                 
-                var updatePrice = _databaseContext.AdministrationPrices.FirstOrDefault(n => n.Id == id);
+                AdministrationPrices updatePrice = await _databaseContext.AdministrationPrices.FirstOrDefaultAsync(n => n.Id == id);
                 if (updatePrice != null)
                 {
-                    updatePrice.FuelType = administrationPrices.FuelType;
                     updatePrice.Price = administrationPrices.Price;
+<<<<<<< HEAD:RoadPricing .NET/Road Pricing/AdministrativeService/AdministrationRepository.cs
                     updatePrice.RoadType = administrationPrices.RoadType;
 
                    // updatePrice.Timeframe = administrationPrices.Timeframe;
                     updatePrice.CarType = administrationPrices.CarType;
+=======
+>>>>>>> ginobranch:RoadPricing .NET/Road Pricing/AdministrativeService/Repository/AdministrationRepository.cs
                     _databaseContext.AdministrationPrices.Attach(updatePrice);
                     _databaseContext.Entry(updatePrice).State = EntityState.Modified;
                     await _databaseContext.SaveChangesAsync();
