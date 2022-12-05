@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using BillingService.Models;
 using BillingService.Services;
+using BillingService.Models.DTO;
 
 namespace BillingService.Controllers
 {
@@ -35,9 +36,8 @@ namespace BillingService.Controllers
         [HttpPost("generatePriceForTrip")]
         public async Task<IActionResult> GeneratePriceForTrip(List<DataModel> datapoints)
         {
-            double resultPrice = _billService.GeneratePriceForTrip(datapoints);
-
-            return Ok(resultPrice);
+            priceLinkDTO priceLinkDTO = await _billService.GeneratePriceForTrip(datapoints);
+            return Ok(priceLinkDTO);
         }
 
         [HttpGet("getUserBills/{userId}/{month}/{year}")]

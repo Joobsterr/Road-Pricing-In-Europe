@@ -1,4 +1,5 @@
 ﻿using BillingService.Models;
+using BillingService.Models.DTO;
 using BillingService.Repository;
 using BillingService.Workers;
 using System.Globalization;
@@ -36,9 +37,11 @@ namespace BillingService.Services
             return specificBill;
         }
 
-        public double GeneratePriceForTrip(List<DataModel> datapoints)
+        public async Task<priceLinkDTO> GeneratePriceForTrip(List<DataModel> datapoints)
         {
-            return CalculateRoutePrice(datapoints);
+            double price = CalculateRoutePrice(datapoints);
+            string paymentLink = await _mollieWorker.generateExternalPaymentLink(price);
+            return new priceLinkDTO(paymentLink, price);
         }
 
         private double CalculateRoutePrice(List<DataModel> datapoints)

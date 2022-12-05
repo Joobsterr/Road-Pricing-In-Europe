@@ -1,4 +1,4 @@
-﻿namespace BillingService.DataBase
+﻿namespace BillingService.Models.DTO
 {
     public class ApiResponse<T>
     {
