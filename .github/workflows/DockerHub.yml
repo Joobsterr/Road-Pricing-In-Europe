@@ -19,7 +19,7 @@ jobs:
       run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
       
     - name: Build the Docker Image  (UserService) 🔧
-      working-directory: ./RoadPricing .NET/Road Pricing/UserService
+      working-directory: ./RoadPricing .NET/Road Pricing
       run: docker build . -f UserService/Dockerfile --tag RoadPriceing/userservice:latest
       
     - name: Push the Docker Image (UserService) 🚀
@@ -29,7 +29,7 @@ jobs:
     
     
     - name: Build the Docker Image (AdministrativeService) 🔧
-      working-directory: ./RoadPricing .NET/Road Pricing/AdministrativeService
+      working-directory: ./RoadPricing .NET/Road Pricing
       run: docker build . -f AdministrativeService/Dockerfile --tag RoadPriceing/AdministrativeService:latest
       
     - name: Push the Docker Image (AdministrativeService) 🚀
@@ -39,7 +39,7 @@ jobs:
       
           
     - name: Build the Docker Image (BillingService) 🔧
-      working-directory: ./RoadPricing .NET/Road Pricing/BillingService
+      working-directory: ./RoadPricing .NET/Road Pricing
       run: docker build . -f BillingService/Dockerfile --tag RoadPriceing/BillingService:latest
       
     - name: Push the Docker Image (BillingService) 🚀
@@ -50,7 +50,7 @@ jobs:
             
           
     - name: Build the Docker Image (CarService) 🔧
-      working-directory: ./RoadPricing .NET/Road Pricing/CarService
+      working-directory: ./RoadPricing .NET/Road Pricing
       run: docker build . -f CarService/Dockerfile --tag RoadPriceing/CarService:latest
       
     - name: Push the Docker Image (CarService) 🚀
@@ -60,7 +60,7 @@ jobs:
       
       
     - name: Build the Docker Image (DataService) 🔧
-      working-directory: ./RoadPricing .NET/Road Pricing/DataService
+      working-directory: ./RoadPricing .NET/Road Pricing
       run: docker build . -f DataService/Dockerfile --tag RoadPriceing/DataService:latest
       
     - name: Push the Docker Image (DataService) 🚀
@@ -70,7 +70,7 @@ jobs:
       
       
     - name: Build the Docker Image (OcelotApiGw) 🔧
-      working-directory: ./RoadPricing .NET/Road Pricing/OcelotApiGw
+      working-directory: ./RoadPricing .NET/Road Pricing
       run: docker build . -f OcelotApiGw/Dockerfile --tag RoadPriceing/OcelotApiGw:latest
       
     - name: Push the Docker Image (OcelotApiGw) 🚀
@@ -80,7 +80,7 @@ jobs:
       
             
     - name: Build the Docker Image (RouteService) 🔧
-      working-directory: ./RoadPricing .NET/Road Pricing/RouteService
+      working-directory: ./RoadPricing .NET/Road Pricing
       run: docker build . -f RouteService/Dockerfile --tag RoadPriceing/RouteService:latest
       
     - name: Push the Docker Image (RouteService) 🚀
