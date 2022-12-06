@@ -40,8 +40,9 @@ namespace BillingService.Services
         public async Task<priceLinkDTO> GeneratePriceForTrip(List<DataModel> datapoints)
         {
             double price = CalculateRoutePrice(datapoints);
+            string description = datapoints.Count + "datapoints for a total price of: €" + price + ". The trip was started in the " + returnDayElement(datapoints[0].dateTimeStamp.Hour);
             string paymentLink = await _mollieWorker.generateExternalPaymentLink(price);
-            return new priceLinkDTO(paymentLink, price);
+            return new priceLinkDTO(paymentLink, price, description);
         }
 
         private double CalculateRoutePrice(List<DataModel> datapoints)
@@ -54,14 +55,18 @@ namespace BillingService.Services
                 price += getFuelTypePrice(datapoint.emissionType);
                 price += getTimeFramePrice(datapoint.dateTimeStamp.Hour);
             }
+            price = Math.Round(price, 2);
 
             return price;
         }
+
+
+
         public async Task<string> getPaymentLink(int userId, int billId)
         {
             Bill userBill = _billRepository.GetPaymentBillById(userId, billId);
             double price = 0;
-            foreach(Trip trip in userBill.trips)
+            foreach (Trip trip in userBill.trips)
             {
                 price += trip.totalPrice;
             }
@@ -125,9 +130,9 @@ namespace BillingService.Services
         {
             switch (fuelType)
             {
-                case "petrol":
+                case "Petrol":
                     return 0.05;
-                case "electric":
+                case "Electric":
                     return 0.02;
                 default:
                     return 0.01;
@@ -144,33 +149,72 @@ namespace BillingService.Services
                 case 3:
                 case 4:
                 case 5:
-                    return 0.10;
+                    return 0.01;
                 case 6:
                 case 7:
                 case 8:
                 case 9:
-                    return 0.50;
+                    return 0.05;
                 case 10:
                 case 11:
                 case 12:
                 case 13:
                 case 14:
                 case 15:
-                    return 0.20;
+                    return 0.02;
                 case 16:
                 case 17:
                 case 18:
                 case 19:
-                    return 0.40;
+                    return 0.04;
                 case 20:
                 case 21:
                 case 22:
                 case 23:
                 case 24:
-                    return 0.30;
+                    return 0.03;
                 default:
                     return 0.01;
             }
         }
-    }
+
+        private string returnDayElement(int hourMark)
+        {
+            switch (hourMark)
+            {
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                    return "nighttime";
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                case 10:
+                case 11:
+                    return "morning";
+                case 12:
+                case 13:
+                case 14:
+                case 15:
+                case 16:
+                case 17:
+                case 18:
+                case 19:
+                    return "afternoon";
+                case 20:
+                case 21:
+                case 22:
+                case 23:
+                case 24:
+                    return "evening";
+                default:
+                    return "unknown";
+            }
+        }
+    } 
 }
+

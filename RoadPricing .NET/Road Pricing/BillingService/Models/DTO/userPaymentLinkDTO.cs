@@ -1,16 +1,14 @@
 ﻿namespace BillingService.Models.DTO
 {
-    public class priceLinkDTO
+    public class userPaymentLinkDTO
     {
         public string paymentLink { get; set; }
         public double price { get; set; }
-        public string description { get; set; }
 
-        public priceLinkDTO(string paymentLink, double price, string calculation)
+        public userPaymentLinkDTO(string paymentLink, double price)
         {
             this.paymentLink = paymentLink;
             this.price = price;
-            this.description = calculation;
         }
     }
 }
