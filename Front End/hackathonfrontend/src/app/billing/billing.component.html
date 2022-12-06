@@ -35,7 +35,7 @@
                                                             <th scope="row">{{trip.id}}</th>
                                                             <td>{{trip.routeStartTime | date:'dd/MM/yy hh:mm'}}</td>
                                                             <td>{{trip.timeDrivenInMinutes | number:'1.2-2' }} minutes</td>
-                                                            <td>€{{trip.totalPrice}}</td>
+                                                            <td>€{{trip.totalPrice | number:'1.2-2' }}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -64,7 +64,7 @@
                                                                 {{bill.month}}
                                                             </td>
                                                             <td style="width:5%" *ngIf="bill.year == 2022">
-                                                                €{{bill.totalPrice}}
+                                                                €{{bill.totalPrice | number:'1.2-2'}}
                                                             </td>
                                                             <td style="width:10%" *ngIf="bill.year == 2022">
                                                                 <button type="button" class="btn btn-light btn-sm"
