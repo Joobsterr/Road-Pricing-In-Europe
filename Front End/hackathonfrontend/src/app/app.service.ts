@@ -37,4 +37,7 @@ export class AppService {
   getBillsByUser(userId: string) {
     return this.http.get(this.rootUrl + '/Bill/getUserBills/' + userId)
   }
+  getPaymentLink(userID: string, billId: string) {
+    return this.http.get(this.rootUrl + '/Bill/getPaymentLink/' + userID + '/' + billId)
+  }
 }
