@@ -51,7 +51,8 @@ namespace BillingService.Controllers
         public async Task<IActionResult> getPaymentLink(int userId, int billId)
         {
             string paymentLink = await _billService.getPaymentLink(userId, billId);
-            return Ok(paymentLink);
+            priceLinkDTO pLink = new priceLinkDTO(paymentLink, userId);
+            return Ok(pLink);
         }
     }
 }
