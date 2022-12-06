@@ -40,16 +40,18 @@ namespace BillingService.Services
         public async Task<priceLinkDTO> GeneratePriceForTrip(List<DataModel> datapoints)
         {
             double price = CalculateRoutePrice(datapoints);
-            string description = datapoints.Count + " datapoints for a total price of: €" + price 
-                + ". The trip was started on " + datapoints[0].dateTimeStamp.ToString("dd/mm/yyyy HH:mm") 
-                + " which resulted in an average rate of €" + getAverageRatePerDatapoint(price, datapoints) + " per transmitted datapoint";
+            string description = datapoints.Count + " datapoints for a total price of €" + price
+                + ". The trip was started on " + datapoints[0].dateTimeStamp.ToString("dd/MM/yyyy HH:mm")
+                + " and ended on " + datapoints[datapoints.Count - 1].dateTimeStamp.ToString("dd/MM/yyyy HH:mm")
+                + ". This resulted in an average rate of €" + getAverageRatePerDatapoint(price, datapoints) + " per minute for this trip";
             string paymentLink = await _mollieWorker.generateExternalPaymentLink(price);
             return new priceLinkDTO(paymentLink, price, description);
         }
 
         private double getAverageRatePerDatapoint(double price, List<DataModel> datapoints)
         {
-            double averageRate = price / datapoints.Count;
+            TimeSpan totalDrivenMinutes = datapoints[datapoints.Count - 1].dateTimeStamp - datapoints[0].dateTimeStamp;
+            double averageRate = price / totalDrivenMinutes.TotalMinutes;
             averageRate = Math.Round(averageRate, 2);
             return averageRate;
         }
