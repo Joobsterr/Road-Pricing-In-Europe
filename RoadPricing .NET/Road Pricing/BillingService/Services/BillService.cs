@@ -40,9 +40,18 @@ namespace BillingService.Services
         public async Task<priceLinkDTO> GeneratePriceForTrip(List<DataModel> datapoints)
         {
             double price = CalculateRoutePrice(datapoints);
-            string description = datapoints.Count + "datapoints for a total price of: €" + price + ". The trip was started in the " + returnDayElement(datapoints[0].dateTimeStamp.Hour);
+            string description = datapoints.Count + " datapoints for a total price of: €" + price 
+                + ". The trip was started on " + datapoints[0].dateTimeStamp.ToString("dd/mm/yyyy HH:mm") 
+                + " which resulted in an average rate of €" + getAverageRatePerDatapoint(price, datapoints) + " per transmitted datapoint";
             string paymentLink = await _mollieWorker.generateExternalPaymentLink(price);
             return new priceLinkDTO(paymentLink, price, description);
+        }
+
+        private double getAverageRatePerDatapoint(double price, List<DataModel> datapoints)
+        {
+            double averageRate = price / datapoints.Count;
+            averageRate = Math.Round(averageRate, 2);
+            return averageRate;
         }
 
         private double CalculateRoutePrice(List<DataModel> datapoints)
@@ -175,44 +184,6 @@ namespace BillingService.Services
                     return 0.03;
                 default:
                     return 0.01;
-            }
-        }
-
-        private string returnDayElement(int hourMark)
-        {
-            switch (hourMark)
-            {
-                case 0:
-                case 1:
-                case 2:
-                case 3:
-                case 4:
-                case 5:
-                    return "nighttime";
-                case 6:
-                case 7:
-                case 8:
-                case 9:
-                case 10:
-                case 11:
-                    return "morning";
-                case 12:
-                case 13:
-                case 14:
-                case 15:
-                case 16:
-                case 17:
-                case 18:
-                case 19:
-                    return "afternoon";
-                case 20:
-                case 21:
-                case 22:
-                case 23:
-                case 24:
-                    return "evening";
-                default:
-                    return "unknown";
             }
         }
     } 
