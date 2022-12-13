@@ -50,7 +50,7 @@ namespace BillingService.Controllers
         [HttpGet("getPaymentLink/{userId}/{billId}")]
         public async Task<IActionResult> getPaymentLink(int userId, int billId)
         {
-            string paymentLink = await _billService.getPaymentLink(userId, billId);
+            string paymentLink = await _billService.GetPaymentLink(userId, billId);
             userPaymentLinkDTO pLink = new userPaymentLinkDTO(paymentLink, userId);
             return Ok(pLink);
         }

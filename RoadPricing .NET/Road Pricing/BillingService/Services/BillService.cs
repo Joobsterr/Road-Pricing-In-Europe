@@ -61,19 +61,16 @@ namespace BillingService.Services
             double price = 0;
             foreach (DataModel datapoint in datapoints)
             {
-                price += getCarTypePrice(datapoint.vehicleTypeName);
-                price += getRoadTypePrice(datapoint.laneMaxSpeedMs);
-                price += getFuelTypePrice(datapoint.emissionType);
-                price += getTimeFramePrice(datapoint.dateTimeStamp.Hour);
+                price += GetCarTypePrice(datapoint.vehicleTypeName);
+                price += GetRoadTypePrice(datapoint.laneMaxSpeedMs);
+                price += GetFuelTypePrice(datapoint.emissionType);
+                price += GetTimeFramePrice(datapoint.dateTimeStamp.Hour);
             }
             price = Math.Round(price, 2);
 
             return price;
         }
-
-
-
-        public async Task<string> getPaymentLink(int userId, int billId)
+        public async Task<string> GetPaymentLink(int userId, int billId)
         {
             Bill userBill = _billRepository.GetPaymentBillById(userId, billId);
             double price = 0;
@@ -87,7 +84,7 @@ namespace BillingService.Services
 
 
         //Mock price methods
-        private double getCarTypePrice(string carType)
+        private double GetCarTypePrice(string carType)
         {
             switch (carType)
             {
@@ -98,7 +95,7 @@ namespace BillingService.Services
             }
         }
 
-        private double getRoadTypePrice(double maxSpeedLane)
+        private double GetRoadTypePrice(double maxSpeedLane)
         {
             switch (maxSpeedLane)
             {
@@ -137,7 +134,7 @@ namespace BillingService.Services
             }
         }
 
-        private double getFuelTypePrice(string fuelType)
+        private double GetFuelTypePrice(string fuelType)
         {
             switch (fuelType)
             {
@@ -150,7 +147,7 @@ namespace BillingService.Services
             }
         }
 
-        private double getTimeFramePrice(int hourMark)
+        private double GetTimeFramePrice(int hourMark)
         {
             switch (hourMark)
             {

@@ -9,6 +9,6 @@ namespace BillingService.Services
         Task<priceLinkDTO> GeneratePriceForTrip(List<DataModel> datapoints);
         List<Bill> GetUserBills(int userId);
         Bill GetUserSpecificBill(int userId, int month, int year);
-        Task<string> getPaymentLink(int userId, int billId);
+        Task<string> GetPaymentLink(int userId, int billId);
     }
 }
