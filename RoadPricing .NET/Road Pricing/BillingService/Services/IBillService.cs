@@ -11,6 +11,6 @@ namespace BillingService.Services
         List<Bill> GetUserBills(int userId);
         Bill GetUserSpecificBill(int userId, int month, int year);
         Task<string> GetPaymentLink(int userId, int billId);
-        Task<TripEn> TransformDatapointsToEnglish(List<DataModel> datapoints);
+        Task<ResponseEn> TransformDatapointsToEnglish(List<DataModel> datapoints);
     }
 }

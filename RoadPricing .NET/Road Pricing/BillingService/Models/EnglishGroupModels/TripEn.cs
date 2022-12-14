@@ -3,14 +3,12 @@
     public class TripEn
     {
         public int carId { get; set; }
-        public List<CoordinateEn> route { get; set; }
-        public string carType { get; set; }
+        public RouteEn route { get; set; }
 
-        public TripEn(int carId, List<CoordinateEn> route, string carType)
+        public TripEn(int carId, RouteEn route)
         {
             this.carId = carId;
             this.route = route;
-            this.carType = carType;
         }
     }
 }

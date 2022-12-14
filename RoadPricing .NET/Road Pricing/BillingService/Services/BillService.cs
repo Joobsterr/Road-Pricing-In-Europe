@@ -88,13 +88,12 @@ namespace BillingService.Services
             return paymentLink;
         }
 
-        public async Task<TripEn> TransformDatapointsToEnglish(List<DataModel> datapoints)
+        public async Task<ResponseEn> TransformDatapointsToEnglish(List<DataModel> datapoints)
         {
             TripEn tripEn = await _transformDataWorker.ConvertData(datapoints);
-            //ResponseEn responseEn = await _transformDataWorker.SendData(tripEn);
-            string responseEn = await _transformDataWorker.SendData(tripEn);
+            ResponseEn responseEn = await _transformDataWorker.SendData(tripEn);
 
-            return tripEn;
+            return responseEn;
         }
     } 
 }

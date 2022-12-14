@@ -56,19 +56,16 @@ namespace BillingService.Controllers
             return Ok(pLink);
         }
 
-        [HttpPost("transformDatapointsToEnglish")]
-        public async Task<IActionResult> TransformDataPointsToEnglish(List<DataModel> datapoints)
+        [HttpPost("sendDatapointsToUk")]
+        public async Task<IActionResult> sendDatapointsToUk(List<DataModel> datapoints)
         {
-            return Ok(await _billService.TransformDatapointsToEnglish(datapoints));
+            ResponseEn responseEn = await _billService.TransformDatapointsToEnglish(datapoints);
 
-            //Whenever API call works
-
-            //TripEn tripEn = await _billService.TransformDatapointsToEnglish(datapoints);
-            //if (tripEn == null || tripEn.route.Count == 0)
-            //{
-            //    return BadRequest();
-            //}
-            //return Ok(tripEn);
+            if (responseEn == null)
+            {
+                return BadRequest();
+            }
+            return Ok(responseEn);
         }
     }
 }

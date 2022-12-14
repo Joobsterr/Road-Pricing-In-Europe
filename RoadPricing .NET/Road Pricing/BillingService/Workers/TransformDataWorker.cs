@@ -1,9 +1,9 @@
 ﻿using BillingService.Models;
-using System.Text.Json;
 using System.Net.Http;
 using Microsoft.AspNetCore.Mvc;
 using BillingService.Models.EnglishGroupModels;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace BillingService.Workers;
 
@@ -26,24 +26,29 @@ public class TransformDataWorker
             coordinateEn.Add(new CoordinateEn(datapoint.dateTimeStamp, datapoint.lat_long.Item2, datapoint.lat_long.Item1, GetRoadTypeEn(datapoint.laneMaxSpeedMs)));
         }
 
-        return new TripEn(datapoints[0].carId, coordinateEn, GetVehicleTypeRandom());
+        return new TripEn(datapoints[0].carId, new RouteEn(coordinateEn, GetVehicleTypeRandom()));
     }
 
-    public async Task<string> SendData(TripEn tripEn)
+    public async Task<ResponseEn> SendData(TripEn tripEn)
     {
-        string url = "http://213.125.163.178:8085/billing/externalBilling";
-        string jsonString = JsonSerializer.Serialize(tripEn);
-        var data = new StringContent(jsonString, Encoding.UTF8, "application/json");
-        return jsonString;
+        try
+        {
+            string url = "http://213.125.163.178:8085/billing/externalBilling";
+            string inputJsonString = JsonConvert.SerializeObject(tripEn);
+            var httpContent = new StringContent(inputJsonString, Encoding.UTF8, "application/json");
 
-        using var client = new HttpClient();
-        
-        var response = await client.PostAsync(url, data);
+            using var client = new HttpClient();
 
-        var result = await response.Content.ReadAsStringAsync();
-        Console.WriteLine(result);
+            var response = await client.PostAsync(url, httpContent);
 
-        return result.ToString();
+            var responseJsonString = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<ResponseEn>(responseJsonString);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+        return new ResponseEn(1, 1, 1, "1", "https://google.nl");
     }
 
     public string GetRoadTypeEn(double maxSpeedLane)
