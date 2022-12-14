@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using BillingService.Models;
 using BillingService.Services;
 using BillingService.Models.DTO;
+using BillingService.Models.EnglishGroupModels;
 
 namespace BillingService.Controllers
 {
@@ -32,7 +33,6 @@ namespace BillingService.Controllers
             if (result) return Ok("Data succesfully added"); else return BadRequest("Something went wrong, try again...");
         }
 
-
         [HttpPost("generatePriceForTrip")]
         public async Task<IActionResult> GeneratePriceForTrip(List<DataModel> datapoints)
         {
@@ -47,12 +47,28 @@ namespace BillingService.Controllers
 
             return Ok(specificBill);
         }
+
         [HttpGet("getPaymentLink/{userId}/{billId}")]
         public async Task<IActionResult> getPaymentLink(int userId, int billId)
         {
             string paymentLink = await _billService.GetPaymentLink(userId, billId);
             userPaymentLinkDTO pLink = new userPaymentLinkDTO(paymentLink, userId);
             return Ok(pLink);
+        }
+
+        [HttpPost("transformDatapointsToEnglish")]
+        public async Task<IActionResult> TransformDataPointsToEnglish(List<DataModel> datapoints)
+        {
+            return Ok(await _billService.TransformDatapointsToEnglish(datapoints));
+
+            //Whenever API call works
+
+            //TripEn tripEn = await _billService.TransformDatapointsToEnglish(datapoints);
+            //if (tripEn == null || tripEn.route.Count == 0)
+            //{
+            //    return BadRequest();
+            //}
+            //return Ok(tripEn);
         }
     }
 }
