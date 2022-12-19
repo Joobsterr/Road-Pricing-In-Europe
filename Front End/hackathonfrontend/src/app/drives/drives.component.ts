@@ -1,124 +1,69 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
+import * as L from 'leaflet';
+import 'leaflet-routing-machine'
+import { icon, Marker } from 'leaflet';
+import { Coords } from 'models/Coords';
+const iconRetinaUrl = 'assets/img/marker-icon-2x.png';
+const iconUrl = 'assets/img/marker-icon.png';
+const shadowUrl = 'assets/img/marker-shadow.png';
+const iconDefault = icon({
+  iconRetinaUrl,
+  iconUrl,
+  shadowUrl,
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  tooltipAnchor: [16, -28],
+  shadowSize: [41, 41]
+});
+Marker.prototype.options.icon = iconDefault;
 
-declare const google: any;
+const c1 = new Coords(51.4508647, 5.4509124);
+const c2 = new Coords(51.443867, 5.45591);
+const c3 = new Coords(51.442804, 5.4648277);
 
-interface Marker {
-lat: number;
-lng: number;
-label?: string;
-draggable?: boolean;
-}
+const coords = new Array<Coords>();
+coords.push(c1, c2, c3);
+
 @Component({
   selector: 'app-maps',
   templateUrl: './drives.component.html',
   styleUrls: ['./drives.component.css']
 })
-export class DrivesComponent implements OnInit {
+export class DrivesComponent implements AfterViewInit {
+  private map;
 
-  constructor() { }
-
-  ngOnInit() {
-    var myLatlng = new google.maps.LatLng(40.748817, -73.985428);
-    var mapOptions = {
-        zoom: 13,
-        center: myLatlng,
-        scrollwheel: false, //we disable de scroll over the map, it is a really annoing when you scroll through page
-        styles: [{
-            "featureType": "water",
-            "stylers": [{
-                "saturation": 43
-            }, {
-                "lightness": -11
-            }, {
-                "hue": "#0088ff"
-            }]
-        }, {
-            "featureType": "road",
-            "elementType": "geometry.fill",
-            "stylers": [{
-                "hue": "#ff0000"
-            }, {
-                "saturation": -100
-            }, {
-                "lightness": 99
-            }]
-        }, {
-            "featureType": "road",
-            "elementType": "geometry.stroke",
-            "stylers": [{
-                "color": "#808080"
-            }, {
-                "lightness": 54
-            }]
-        }, {
-            "featureType": "landscape.man_made",
-            "elementType": "geometry.fill",
-            "stylers": [{
-                "color": "#ece2d9"
-            }]
-        }, {
-            "featureType": "poi.park",
-            "elementType": "geometry.fill",
-            "stylers": [{
-                "color": "#ccdca1"
-            }]
-        }, {
-            "featureType": "road",
-            "elementType": "labels.text.fill",
-            "stylers": [{
-                "color": "#767676"
-            }]
-        }, {
-            "featureType": "road",
-            "elementType": "labels.text.stroke",
-            "stylers": [{
-                "color": "#ffffff"
-            }]
-        }, {
-            "featureType": "poi",
-            "stylers": [{
-                "visibility": "off"
-            }]
-        }, {
-            "featureType": "landscape.natural",
-            "elementType": "geometry.fill",
-            "stylers": [{
-                "visibility": "on"
-            }, {
-                "color": "#b8cb93"
-            }]
-        }, {
-            "featureType": "poi.park",
-            "stylers": [{
-                "visibility": "on"
-            }]
-        }, {
-            "featureType": "poi.sports_complex",
-            "stylers": [{
-                "visibility": "on"
-            }]
-        }, {
-            "featureType": "poi.medical",
-            "stylers": [{
-                "visibility": "on"
-            }]
-        }, {
-            "featureType": "poi.business",
-            "stylers": [{
-                "visibility": "simplified"
-            }]
-        }]
-
-    };
-    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-
-    var marker = new google.maps.Marker({
-        position: myLatlng,
-        title: "Hello World!"
+  private initMap(): void {
+    this.map = L.map('map', {
+      center: [51.4381919, 5.4797248],
+      zoom: 13
     });
 
-    // To add the marker to the map, call setMap();
-    marker.setMap(map);
+    const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      minZoom: 3,
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    });
+    tiles.addTo(this.map);
+    L.Routing.control({
+      plan: new L.Routing.Plan(
+          // loop through data points and add them as waypoints
+          coords.map((element) => {
+            return L.latLng(element.lat, element.long)
+          }), {
+        createMarker: function (i, waypoint, n) {
+          if (i === 0 || i === n - 1) {
+            // show markers
+            return L.marker(waypoint.latLng);
+          }
+          return false;
+        }
+      })
+    }).addTo(this.map);
   }
+  constructor() { }
 
+  ngAfterViewInit(): void {
+    this.initMap();
+  }
 }
