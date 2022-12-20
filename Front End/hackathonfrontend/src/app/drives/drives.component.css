@@ -1,1 +1,13 @@
-#map { height: 90%; }
+#parent {
+    display: flex;
+}
+#table-info {
+    width: 22%;
+    margin-top: 4%;
+    /* Just so it's visible */
+}
+#map {
+    width: 80%;
+    flex: 1;
+    /* Grow to rest of container */
+}

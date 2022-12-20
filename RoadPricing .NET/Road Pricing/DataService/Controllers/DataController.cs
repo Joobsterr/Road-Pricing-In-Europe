@@ -21,7 +21,7 @@ namespace DataService.Controllers
             return Ok(datapoints);
         }
 
-        [HttpGet("getDataPointsPerCarPerRoute")]
+        [HttpGet("getDataPointsPerCarPerRoute/{carId}/{routeId}")]
         public async Task<IActionResult> getDataPointsPerCarPerRoute(int carId, int routeId)
         {
             List<DataModel> datapoints = _dataService.getDataPointsPerCarPerRoute(carId, routeId);
