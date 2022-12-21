@@ -60,6 +60,23 @@ namespace DataService
             return dataPoints;
         }
 
+        public List<DataModel> getDataPointsForUser(int userId)
+        {
+            var session = Cluster.Connect();
+            const string quote = "\"";
+            string query = "SELECT * FROM sumo.datapoints WHERE " + quote + "userId" + quote + " = " + userId + " ALLOW FILTERING;";
+
+            RowSet rowset = session.Execute(query);
+
+            List<DataModel> dataPoints = new List<DataModel>();
+            foreach (var row in rowset)
+            {
+                dataPoints.Add(createDataModel(row));
+            }
+
+            return dataPoints;
+        }
+
         public List<DataModel> getDataPointsPerCarPerRoute(int carId, int routeId)
         {
             var session = Cluster.Connect();
@@ -106,7 +123,8 @@ namespace DataService
                     row.GetValue<int>("route_id"),
                     row.GetValue<double>("lane_max_speed_ms"),
                     row.GetValue<string>("vehicle_type_name"),
-                    row.GetValue<string>("emission_type")); ;
+                    row.GetValue<string>("emission_type"),
+                    row.GetValue<int>("userId")); ;
         }
     }
 }

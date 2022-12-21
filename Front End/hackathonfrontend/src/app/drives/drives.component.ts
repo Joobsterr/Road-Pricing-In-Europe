@@ -25,21 +25,20 @@ const iconDefault = icon({
 });
 Marker.prototype.options.icon = iconDefault;
 
-let coords = new Array<datapoint>();
-let aCoords = new Array<datapoint>();
-
 @Component({
   selector: 'app-maps',
   templateUrl: './drives.component.html',
   styleUrls: ['./drives.component.css']
 })
 export class DrivesComponent implements OnInit {
-  private map;
-
+    coords = new Array<datapoint>();
+    routes = new Array<Array<datapoint>>();
+    routeIds = new Array<number>();
+    private map;
   private initMap(): void {
     this.map = L.map('map', {
-      center: [51.4381919, 5.4797248],
-      zoom: 13,
+      center: [51.8843034, 5.1871465],
+      zoom: 7.5,
     });
     const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 18,
@@ -56,27 +55,40 @@ export class DrivesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.http.get<any>('https://localhost:7168/Data/getDataPointsPerCarPerRoute/769/769').subscribe(
+    this.http.get<any>('https://localhost:7168/Data/getDataPointsForUser/' + localStorage.getItem('userID')).subscribe(
         (response) => {
-          coords = (response) as datapoint[];
-          L.Routing.control({
-            show: false,
-            plan: new L.Routing.Plan(
-                // loop through data points and add them as waypoints
-                // tslint:disable-next-line:no-shadowed-variable
-                coords.map((element) => {
-                  return L.latLng(element.lat_long.item1, element.lat_long.item2)
-                }), {
-                  createMarker: function (i, waypoint, n) {
-                    if (i === 0 || i === n - 1) {
-                      // show markers
-                      return L.marker(waypoint.latLng);
-                    }
-                    return false;
-                  }
-                })
-          }).addTo(this.map);
+          this.coords = (response) as datapoint[];
+          for (const coord of this.coords) {
+            if (!this.routeIds.includes(coord.routeId)) {
+                this.routeIds.push(coord.routeId);
+            }
+          }
+          for (const idroute of this.routeIds) {
+              const route = this.coords.filter(x => x.routeId === idroute);
+              this.routes.push(route);
+          }
         });
     this.initMap();
+  }
+  changeMap(selectedCoords) {
+      this.map.remove();
+      this.initMap();
+      L.Routing.control({
+          show: false,
+          plan: new L.Routing.Plan(
+              // loop through data points and add them as waypoints
+              // tslint:disable-next-line:no-shadowed-variable
+              selectedCoords.map((element) => {
+                  return L.latLng(element.lat_long.item1, element.lat_long.item2)
+              }), {
+                  createMarker: function (i, waypoint, n) {
+                      if (i === 0 || i === n - 1) {
+                          // show markers
+                          return L.marker(waypoint.latLng);
+                      }
+                      return false;
+                  }
+              })
+      }).addTo(this.map);
   }
 }

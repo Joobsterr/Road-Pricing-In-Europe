@@ -20,7 +20,7 @@ namespace DataService
 
             foreach (DataDTO dataDTO in dataInputDto)
             {
-                dataModels.Add(new DataModel(dataDTO.carId, new Tuple<double, double>(dataDTO.latitude, dataDTO.longitude), DateTime.Parse(dataDTO.timeStamp), dataDTO.routeId, dataDTO.laneMaxSpeedMs, dataDTO.vehicleTypeName, "Petrol"));
+                dataModels.Add(new DataModel(dataDTO.carId, new Tuple<double, double>(dataDTO.latitude, dataDTO.longitude), DateTime.Parse(dataDTO.timeStamp), dataDTO.routeId, dataDTO.laneMaxSpeedMs, dataDTO.vehicleTypeName, "Petrol", 1));
             }
 
             _repository.enterDataPoint(dataModels);
@@ -39,6 +39,11 @@ namespace DataService
         public List<DataModel> getDataPointsPerCarWithTimeframe(int carId, DateTime startDate, DateTime endDate)
         {
             return _repository.getDataPointsPerCarWithTimeframe(carId, startDate, endDate);
+        }
+
+        public List<DataModel> getDataPointsForUser(int userId)
+        {
+            return _repository.getDataPointsForUser(userId);
         }
     }
 }

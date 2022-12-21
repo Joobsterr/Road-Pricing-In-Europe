@@ -34,5 +34,11 @@ namespace DataService.Controllers
             List<DataModel> datapoints = _dataService.getDataPointsPerCarWithTimeframe(carId, startDate, endDate);
             return Ok(datapoints);
         }
+        [HttpGet("getdataPointsForUser/{userId}")]
+        public async Task<IActionResult> getDataPointsForUser(int userId)
+        {
+            List<DataModel> datapoints = _dataService.getDataPointsForUser(userId);
+            return Ok(datapoints);
+        }
     }
 }

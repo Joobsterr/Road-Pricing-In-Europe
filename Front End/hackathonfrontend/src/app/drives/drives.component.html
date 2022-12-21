@@ -12,15 +12,15 @@
     <div id="table-info">
         <table class="table">
             <thead>
-            <th>License Plate</th>
+            <th>RouteId</th>
             <th>Timestamp</th>
             </thead>
-            <tbody>
+            <tbody *ngFor="let y of routes; let x = index">
             <tr>
-                <td>95-SF-BS</td>
-                <td>20-12-2022 | 19:19</td>
+                <td>{{y[0].routeId}}</td>
+                <td>{{y[0].dateTimeStamp}}</td>
                 <td>
-                    <button type="button" class="btn btn-light btn-sm">Click to show</button>
+                    <button type="button" class="btn btn-light btn-sm" (click)="changeMap(y)">Click to show</button>
                 </td>
             </tr>
             </tbody>
